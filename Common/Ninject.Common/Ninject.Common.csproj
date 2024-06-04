@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\BLL\Database.Contracts.BLL\Database.Contracts.BLL.csproj" />
+    <ProjectReference Include="..\..\BLL\Database.Core.BLL\Database.Core.BLL.csproj" />
+    <ProjectReference Include="..\..\DAL\Database.Contracts.DAL\Database.Contracts.DAL.csproj" />
+    <ProjectReference Include="..\..\DAL\Database.Core.DAL\Database.Core.DAL.csproj" />
+    <ProjectReference Include="..\..\NAL\Database.Contracts.NAL\Database.Contracts.NAL.csproj" />
+    <ProjectReference Include="..\..\NAL\Database.Core.NAL\Database.Core.NAL.csproj" />
+  </ItemGroup>
+
+</Project>
