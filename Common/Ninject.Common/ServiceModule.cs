@@ -6,27 +6,37 @@ using Database.Contracts.DAL;
 using Database.Core.DAL;
 using Database.Contracts.BLL;
 using Database.Core.BLL;
+using System.Diagnostics;
 
 namespace Ninject.Common
 {
-    public class ServiceModule
+    public static class ServiceModule // TODO: сделать юнит тест на прогонку всех DI
     {
-        public static IContainer Container { get; set; }
+        public static IContainer? Container { get; set; } = null;
 
-        static ServiceModule()
+        public static bool Init()
         {
-            var builder = new ContainerBuilder();
-            // NAL
-            builder.RegisterType<IGroupNetDao>().As<GroupNetDao>();
+            try
+            {
+                var builder = new ContainerBuilder();
+                // NAL
+                builder.RegisterType<GroupNetDao>().As<IGroupNetDao>();
 
-            // DAL
-            builder.RegisterType<IGroupDbDao>().As<GroupDbDao>();
+                // DAL
+                builder.RegisterType<GroupDbDao>().As<IGroupDbDao>();
 
-            // BLL
-            builder.RegisterType<IGroupLogic>().As<GroupLogic>();
+                // BLL
+                builder.RegisterType<GroupLogic>().As<IGroupLogic>();
 
-            // ctor DI
-            Container = builder.Build();
+                // ctor DI
+                Container = builder.Build();
+            }
+            catch(Exception ex)
+            {
+                Debug.WriteLine(ex);
+                return false;
+            }
+            return true;
         }
 
         // using in PL etc:

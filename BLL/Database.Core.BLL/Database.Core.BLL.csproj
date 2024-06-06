@@ -1,11 +1,17 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <BaseOutputPath>../../output/bin/</BaseOutputPath>
     <BaseIntermediateOutputPath>../../output/obj/</BaseIntermediateOutputPath>
   </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\Models.Common\Models.Common.csproj" />
+    <ProjectReference Include="..\..\DAL\Database.Contracts.DAL\Database.Contracts.DAL.csproj" />
+    <ProjectReference Include="..\Database.Contracts.BLL\Database.Contracts.BLL.csproj" />
+  </ItemGroup>
 
 </Project>

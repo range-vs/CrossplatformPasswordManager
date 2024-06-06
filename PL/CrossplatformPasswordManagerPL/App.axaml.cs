@@ -5,6 +5,8 @@ using Avalonia.Markup.Xaml;
 using CrossplatformPasswordManager.ViewModels;
 using CrossplatformPasswordManager.Views;
 
+using Ninject.Common;
+
 namespace CrossplatformPasswordManager;
 
 public partial class App : Application
@@ -12,6 +14,7 @@ public partial class App : Application
     public override void Initialize()
     {
         AvaloniaXamlLoader.Load(this);
+        ServiceModule.Init();
     }
 
     public override void OnFrameworkInitializationCompleted()

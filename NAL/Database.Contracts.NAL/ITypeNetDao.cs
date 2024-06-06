@@ -7,9 +7,9 @@ using Entities.Common;
 
 namespace Database.Contracts.NAL
 {
-    public interface IGroupNetDao
+    public interface ITypeNetDao
     {
-        Task<IEnumerable<GroupEntity>> GetAll();
-        Task WriteConcurrent(GroupEntity entity);
+        Task<IEnumerable<TypeEntity>> GetAll();
+        Task WriteConcurrent(TypeEntity entity);
     }
 }
