@@ -3,7 +3,6 @@ using Autofac.Core;
 using Avalonia.DesignerSupport;
 using Avalonia.Threading;
 using Database.Contracts.BLL;
-using Database.Contracts.NAL;
 using DynamicData.Binding;
 using Entities.Common;
 using Models.Common;

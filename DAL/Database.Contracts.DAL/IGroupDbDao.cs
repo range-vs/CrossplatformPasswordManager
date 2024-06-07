@@ -10,7 +10,7 @@ namespace Database.Contracts.DAL
 {
     public interface IGroupDbDao
     {
-        Task<IEnumerable<GroupModel>> GetAll();
-        Task WriteConcurrent(GroupModel model);
+        Task<IEnumerable<GroupEntity>> GetAll();
+        Task WriteConcurrent(GroupEntity model);
     }
 }

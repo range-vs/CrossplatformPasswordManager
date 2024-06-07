@@ -1,7 +1,5 @@
 ﻿using Autofac.Core;
 using Autofac;
-using Database.Contracts.NAL;
-using Database.Core.NAL;
 using Database.Contracts.DAL;
 using Database.Core.DAL;
 using Database.Contracts.BLL;
@@ -19,9 +17,6 @@ namespace Ninject.Common
             try
             {
                 var builder = new ContainerBuilder();
-                // NAL
-                builder.RegisterType<GroupNetDao>().As<IGroupNetDao>();
-
                 // DAL
                 builder.RegisterType<GroupDbDao>().As<IGroupDbDao>();
 

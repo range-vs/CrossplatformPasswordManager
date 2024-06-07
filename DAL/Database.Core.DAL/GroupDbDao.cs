@@ -1,5 +1,4 @@
 ﻿using Database.Contracts.DAL;
-using Database.Contracts.NAL;
 using Entities.Common;
 using Models.Common;
 using System;
@@ -12,28 +11,18 @@ namespace Database.Core.DAL
 {
     public class GroupDbDao : IGroupDbDao
     {
-        private readonly IGroupNetDao _groupNetDao;
 
-        public GroupDbDao(IGroupNetDao groupNetDao)
+        public async Task<IEnumerable<GroupEntity>> GetAll()
         {
-            _groupNetDao = groupNetDao;
-        }
-
-        public async Task<IEnumerable<GroupModel>> GetAll()
-        {
-            // TODO: запрашиваем у NAL все сущности и кастим их уже в model (MVVM) - с оомощью Automapper
-            var result = await _groupNetDao.GetAll();
-            List<GroupModel> collection = new List<GroupModel>();
-            foreach (var entity in result) 
-            {
-                collection.Add(new GroupModel { Id = entity.Id, Name = entity.Name });
-            }
+            // TODO: запрашиваем все сущности с сервака, и передаем их в BLL
+            await Task.Delay(1000);
+            List<GroupEntity> collection = new List<GroupEntity>();
             return collection;
         }
 
-        public async Task WriteConcurrent(GroupModel entity)
+        public async Task WriteConcurrent(GroupEntity entity)
         {
-            // TODO: кастим модель в сущность и отправляем в NAL
+            // TODO: отправляем на сервак
             // пока имитация
             await Task.Delay(1000);
         }

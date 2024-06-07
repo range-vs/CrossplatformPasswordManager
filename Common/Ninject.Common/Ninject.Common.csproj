@@ -17,8 +17,6 @@
     <ProjectReference Include="..\..\BLL\Database.Core.BLL\Database.Core.BLL.csproj" />
     <ProjectReference Include="..\..\DAL\Database.Contracts.DAL\Database.Contracts.DAL.csproj" />
     <ProjectReference Include="..\..\DAL\Database.Core.DAL\Database.Core.DAL.csproj" />
-    <ProjectReference Include="..\..\NAL\Database.Contracts.NAL\Database.Contracts.NAL.csproj" />
-    <ProjectReference Include="..\..\NAL\Database.Core.NAL\Database.Core.NAL.csproj" />
   </ItemGroup>
 
 </Project>
