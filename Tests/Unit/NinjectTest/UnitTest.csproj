@@ -7,6 +7,9 @@
 
     <IsPackable>false</IsPackable>
     <IsTestProject>true</IsTestProject>
+    
+    <BaseOutputPath>../output/bin/</BaseOutputPath>
+    <BaseIntermediateOutputPath>../output/obj/</BaseIntermediateOutputPath>
   </PropertyGroup>
 
   <ItemGroup>
