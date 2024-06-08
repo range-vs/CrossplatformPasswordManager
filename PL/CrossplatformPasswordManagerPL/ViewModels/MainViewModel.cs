@@ -8,6 +8,7 @@ using Entities.Common;
 using Models.Common;
 using Ninject.Common;
 using ReactiveUI;
+using Server.Contracts.BLL;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
@@ -68,5 +69,10 @@ public class MainViewModel : ViewModelBase
             // Debug.WriteLine(Greeting);
         });
 
+        //using (var scope = ServiceModule.Container?.BeginLifetimeScope())
+        //{
+        //    var authLogic = scope?.Resolve<IAuthLogic>();
+        //    authLogic?.TryServerAuth("url", "login", "password");
+        //}
     }
 }

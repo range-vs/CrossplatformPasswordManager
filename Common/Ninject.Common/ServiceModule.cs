@@ -5,6 +5,12 @@ using Database.Core.DAL;
 using Database.Contracts.BLL;
 using Database.Core.BLL;
 using System.Diagnostics;
+using Server.Core.BLL;
+using Server.Contracts.BLL;
+using Sequrity.Contracts.BLL;
+using Sequrity.Core.BLL;
+using LocalStorage.Core.DAL;
+using LocalStorage.Contratcs.DAL;
 
 namespace Ninject.Common
 {
@@ -19,9 +25,12 @@ namespace Ninject.Common
                 var builder = new ContainerBuilder();
                 // DAL
                 builder.RegisterType<GroupDbDao>().As<IGroupDbDao>();
+                builder.RegisterType<LocalStorageDao>().As<ILocalStorageDao>();
 
                 // BLL
                 builder.RegisterType<GroupLogic>().As<IGroupLogic>();
+                builder.RegisterType<AuthLogic>().As<IAuthLogic>();
+                builder.RegisterType<AuthSequrityLogic>().As<IAuthSequrityLogic>();
 
                 // ctor DI
                 Container = builder.Build();

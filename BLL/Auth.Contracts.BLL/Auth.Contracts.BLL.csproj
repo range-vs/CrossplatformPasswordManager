@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LocalStorage.Contratcs.DAL\LocalStorage.Contratcs.DAL.csproj" />
+    <ProjectReference Include="..\..\Common\Models.Common\Models.Common.csproj" />
   </ItemGroup>
 
 </Project>
