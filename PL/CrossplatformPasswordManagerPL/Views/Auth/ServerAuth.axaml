@@ -7,7 +7,7 @@
              NavigationBar.Visible="False">
 	<Grid>
 		<StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Spacing="14">
-			<TextBlock Text="Hello!" FontSize="18" HorizontalAlignment="Center"></TextBlock>
+			<TextBlock Text="Server Auth Page" FontSize="18" HorizontalAlignment="Center"></TextBlock>
 			<Button Content="Test button" HorizontalAlignment="Center" Margin="30"></Button>
 		</StackPanel>
 	</Grid>
