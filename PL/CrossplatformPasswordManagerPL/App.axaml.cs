@@ -1,13 +1,13 @@
 ﻿using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
-
-using CrossplatformPasswordManager.ViewModels;
-using CrossplatformPasswordManager.Views;
+using CrossplatformPasswordManagerPL.Views.PlatformSpecific.Windows;
+using CrossplatformPasswordManagerPL.ViewModels;
+using CrossplatformPasswordManagerPL.Views;
 
 using Ninject.Common;
 
-namespace CrossplatformPasswordManager;
+namespace CrossplatformPasswordManagerPL;
 
 public partial class App : Application
 {
@@ -21,16 +21,16 @@ public partial class App : Application
     {
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
-            desktop.MainWindow = new MainWindow
+            desktop.MainWindow = new Window
             {
-                DataContext = new MainViewModel()
+                DataContext = new CommonViewModel()
             };
         }
         else if (ApplicationLifetime is ISingleViewApplicationLifetime singleViewPlatform)
         {
-            singleViewPlatform.MainView = new MainView
+            singleViewPlatform.MainView = new CommonView
             {
-                DataContext = new MainViewModel()
+                DataContext = new CommonViewModel()
             };
         }
 

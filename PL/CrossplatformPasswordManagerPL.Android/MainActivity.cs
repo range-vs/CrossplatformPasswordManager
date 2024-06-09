@@ -5,7 +5,7 @@ using Avalonia;
 using Avalonia.Android;
 using Avalonia.ReactiveUI;
 
-namespace CrossplatformPasswordManager.Android;
+namespace CrossplatformPasswordManagerPL.Android;
 
 [Activity(
     Label = "CrossplatformPasswordManager.Android",

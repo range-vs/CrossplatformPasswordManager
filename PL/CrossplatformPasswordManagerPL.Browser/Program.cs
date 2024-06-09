@@ -5,7 +5,7 @@ using Avalonia;
 using Avalonia.Browser;
 using Avalonia.ReactiveUI;
 
-using CrossplatformPasswordManager;
+using CrossplatformPasswordManagerPL;
 
 [assembly: SupportedOSPlatform("browser")]
 

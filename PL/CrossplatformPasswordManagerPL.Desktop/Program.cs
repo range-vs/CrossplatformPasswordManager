@@ -2,8 +2,9 @@
 
 using Avalonia;
 using Avalonia.ReactiveUI;
+using AvaloniaInside.Shell;
 
-namespace CrossplatformPasswordManager.Desktop;
+namespace CrossplatformPasswordManagerPL.Desktop;
 
 class Program
 {
@@ -20,5 +21,6 @@ class Program
             .UsePlatformDetect()
             .WithInterFont()
             .LogToTrace()
-            .UseReactiveUI();
+            .UseReactiveUI()
+            .UseShell();
 }

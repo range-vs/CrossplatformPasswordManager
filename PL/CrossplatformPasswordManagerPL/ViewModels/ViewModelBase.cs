@@ -1,6 +1,6 @@
 ﻿using ReactiveUI;
 
-namespace CrossplatformPasswordManager.ViewModels;
+namespace CrossplatformPasswordManagerPL.ViewModels;
 
 public class ViewModelBase : ReactiveObject
 {

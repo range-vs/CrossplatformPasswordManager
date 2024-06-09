@@ -2,17 +2,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:vm="clr-namespace:CrossplatformPasswordManager.ViewModels"
+             xmlns:vm="clr-namespace:CrossplatformPasswordManagerPL.ViewModels"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="CrossplatformPasswordManager.Views.MainView"
-             x:DataType="vm:MainViewModel">
-  <Design.DataContext>
-    <!-- This only sets the DataContext for the previewer in an IDE,
+             x:Class="CrossplatformPasswordManagerPL.Views.CommonView"
+			 xmlns:viewsAuth="clr-namespace:CrossplatformPasswordManagerPL.Views.Auth"
+			 >
+	<Design.DataContext>
+		<!-- This only sets the DataContext for the previewer in an IDE,
          to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
-    <vm:MainViewModel />
-  </Design.DataContext>
+		<vm:CommonViewModel />
+	</Design.DataContext>
 
-	<StackPanel Background="Black">
+	<!--<StackPanel Background="Black">
 		<Button Content="{Binding ButtonName^, Mode=OneWay, FallbackValue='Click me!'}" Command="{Binding Click}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
 		<TextBlock Text="{Binding Greeting^, FallbackValue='Welcome to Avalonia!'}}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
 		<ListBox ItemsSource="{Binding Groups^}">
@@ -25,6 +26,27 @@
 				</DataTemplate>
 			</ListBox.ItemTemplate>
 		</ListBox>
-	</StackPanel>
-	
+	</StackPanel>-->
+
+	<ShellView Name="ShellViewMain"
+		   HorizontalAlignment="Stretch"
+		   VerticalAlignment="Stretch"
+		   DefaultSideMenuSize="0"
+		   DefaultRoute="/server_auth"
+
+		   SmallScreenSideMenuMode="Overlay"
+		   SmallScreenSideMenuBehave="Default"
+
+		   MediumScreenSideMenuMode="Inline"
+		   MediumScreenSideMenuBehave="Default"
+
+		   LargeScreenSideMenuMode="Inline"
+		   LargeScreenSideMenuBehave="Keep"  
+			   
+		>
+
+		<Route Path="server_auth" Page="viewsAuth:ServerAuth"></Route>
+
+	</ShellView>
+
 </UserControl>
