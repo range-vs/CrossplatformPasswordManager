@@ -3,6 +3,7 @@ using Autofac.Core;
 using Avalonia.Animation;
 using Avalonia.DesignerSupport;
 using Avalonia.Threading;
+using AvaloniaInside.Shell;
 using AvaloniaInside.Shell.Platform;
 using Database.Contracts.BLL;
 using DynamicData.Binding;
@@ -74,8 +75,12 @@ public class CommonViewModel : ViewModelBase
             this.RaiseAndSetIfChanged(ref _currentTransition, value);
         }
     }
-    public CommonViewModel() 
+
+    public string StartPage { get; set; }
+
+    public CommonViewModel()
     {
+        StartPage = "/server_auth";
         //Click = ReactiveCommand.Create(() =>
         //{
         //    // Debug.WriteLine(Greeting);
@@ -87,4 +92,5 @@ public class CommonViewModel : ViewModelBase
         //    authLogic?.TryServerAuth("url", "login", "password");
         //}
     }
+
 }

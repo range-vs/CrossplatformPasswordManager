@@ -4,11 +4,20 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="CrossplatformPasswordManagerPL.Views.Auth.ServerAuth"
-             NavigationBar.Visible="False">
+             NavigationBar.Visible="False"
+			 x:CompileBindings="True"
+	         xmlns:vm="clr-namespace:CrossplatformPasswordManagerPL.ViewModels.Auth"
+			 x:DataType="vm:ServerAuthViewModel">
 	<Grid>
 		<StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Spacing="14">
 			<TextBlock Text="Server Auth Page" FontSize="18" HorizontalAlignment="Center"></TextBlock>
-			<Button Content="Test button" HorizontalAlignment="Center" Margin="30"></Button>
+			<TextBlock Text="Write url server:" FontSize="16" HorizontalAlignment="Center"></TextBlock>
+			<TextBox Text="" FontSize="16" HorizontalAlignment="Center" Watermark="Enter your url server"></TextBox>
+			<TextBlock Text="Write login:" FontSize="16" HorizontalAlignment="Center"></TextBlock>
+			<TextBox Text="" FontSize="16" HorizontalAlignment="Center" Watermark="Enter your login"></TextBox>
+			<TextBlock Text="Write password:" FontSize="16" HorizontalAlignment="Center"></TextBlock>
+			<TextBox Text="" FontSize="16" HorizontalAlignment="Center" PasswordChar="*" Watermark="Enter your password"></TextBox>
+			<Button Command="{Binding Click}" Content="Auth!" HorizontalAlignment="Center" Margin="30" ></Button>
 		</StackPanel>
 	</Grid>
 </Page>

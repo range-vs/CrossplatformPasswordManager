@@ -13,6 +13,7 @@ using Server.Contracts.BLL;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
@@ -22,15 +23,16 @@ public class ServerAuthViewModel : ViewModelBase
 {
     private readonly INavigator _navigationService;
 
-    public ICommand Click { get; }
+    public ICommand Click { get; set; }
 
     public ServerAuthViewModel(INavigator navigationService)
     {
         _navigationService = navigationService;
-        Click = ReactiveCommand.Create(() =>
-        {
-            // Debug.WriteLine(Greeting);
-        });
+        Click = ReactiveCommand.CreateFromTask(OpenAsync);
+    }
 
+    private Task OpenAsync()
+    {
+        return _navigationService.NavigateAsync("/local_auth");
     }
 }

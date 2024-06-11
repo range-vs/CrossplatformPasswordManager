@@ -6,6 +6,7 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="CrossplatformPasswordManagerPL.Views.CommonView"
 			 xmlns:viewsAuth="clr-namespace:CrossplatformPasswordManagerPL.Views.Auth"
+			 x:DataType="vm:CommonViewModel"
 			 >
 	<Design.DataContext>
 		<!-- This only sets the DataContext for the previewer in an IDE,
@@ -32,7 +33,7 @@
 		   HorizontalAlignment="Stretch"
 		   VerticalAlignment="Stretch"
 		   DefaultSideMenuSize="0"
-		   DefaultRoute="/server_auth"
+		   DefaultRoute="{Binding StartPage}"
 
 		   SmallScreenSideMenuMode="Overlay"
 		   SmallScreenSideMenuBehave="Default"
@@ -46,6 +47,7 @@
 		>
 
 		<Route Path="server_auth" Page="viewsAuth:ServerAuth"></Route>
+		<Route Path="local_auth" Page="viewsAuth:LocalAuth"></Route>
 
 	</ShellView>
 

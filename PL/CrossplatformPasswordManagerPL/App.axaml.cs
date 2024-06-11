@@ -33,7 +33,6 @@ public partial class App : Application
                 DataContext = new CommonViewModel()
             };
         }
-
         base.OnFrameworkInitializationCompleted();
     }
 }
