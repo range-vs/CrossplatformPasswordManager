@@ -22,12 +22,16 @@ namespace Server.Core.BLL
             _localStorageDao = localStorageDao;
         }
 
-        public bool CheckServerAuth(string url, string login, string password)
+        public async Task<bool> CheckServerAuth(string url, string login, string password)
         {
-            // TODO запрос к Sequrity BLL (CipherServerCredentions), корректны ли кредсы
-            // нужна связь с инетом
-            // выполняется первый раз всегда, обязательно
-            return true;
+            // TODO
+            // обращаемся к нашему серваку, пытаемся получить у него token
+            // в слечае успеха передаем токен в LocalStorage и возвращем успех в PL
+            await Task.Delay(4000);
+            string token = "this_token";
+            if (_authSequrityLogic != null)
+                _authSequrityLogic.CipherServerCredentions(token);
+            return await Task.FromResult(true);
         }
 
         public bool TryServerAuth()

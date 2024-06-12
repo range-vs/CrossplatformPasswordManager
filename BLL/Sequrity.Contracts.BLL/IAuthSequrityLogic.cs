@@ -8,7 +8,7 @@ namespace Sequrity.Contracts.BLL
 {
     public interface IAuthSequrityLogic
     {
-        void CipherServerCredentions(string url, string login, string password);
+        void CipherServerCredentions(string token);
         void CipherLocalCredentions(string pin);
         void DeCipherLocalCredentions();
         void CipherSystemCredentions();

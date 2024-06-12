@@ -30,6 +30,7 @@ public class ServerAuthViewModel : ViewModelBase
     private string _login;
     private string _errorMessagePassword;
     private string _password;
+    private bool _isProsessAuth;
 
 
     public ICommand AuthCommand { get; set; }
@@ -81,31 +82,44 @@ public class ServerAuthViewModel : ViewModelBase
             ErrorMessagePassword = ValidateText(_password);
         }
     }
+    public bool IsProcessAuth
+    {
+        get => _isProsessAuth;
+        set => this.RaiseAndSetIfChanged(ref _isProsessAuth, value);
+    }
 
     public ServerAuthViewModel(INavigator navigationService)
     {
         TypeURLSelectedItem = TypeURL[0];
         ErrorMessageURL = ErrorMessageLogin = ErrorMessagePassword = string.Empty;
+        IsProcessAuth = false;
 
         _navigationService = navigationService;
         AuthCommand = ReactiveCommand.CreateFromTask(TryServerAuth);
     }
 
-    private Task TryServerAuth()
+    private async Task TryServerAuth()
     {
+        IsProcessAuth = true;
         ErrorMessageURL = ValidateText(URL);
         ErrorMessageLogin = ValidateText(Login);
         ErrorMessagePassword = ValidateText(Password);
         if (ErrorMessageURL != string.Empty || ErrorMessageLogin != string.Empty || ErrorMessagePassword != string.Empty)
         {
-            return Task.FromResult(false);
+            IsProcessAuth = false;
+            return;
         }
-        // TODO: пытаемся обратиться к BLL -> DAL с попыткой залогиниться на сервак
-        // на время ожидания блочим экран и вешаем прогресс бар
-        // если ответ успешен, то пишем, что все ок перекидываемся на новый экран
-        // если ответ не успешен, то пишем, что все плохо. 
-        // TODO: валидаторы, конвертеры - прикрутить к ServerAuth
-        return _navigationService.NavigateAsync("/local_auth");
+        using (var scope = ServiceModule.Container?.BeginLifetimeScope())
+        {
+            var authLogic = scope?.Resolve<IAuthLogic>();
+            var statusAuth = await authLogic?.CheckServerAuth(URL, Login, Password);
+            if(statusAuth)
+            {
+                await _navigationService.NavigateAsync("/local_auth");
+                return;
+            }
+        }
+        IsProcessAuth = false; 
     }
 
     public string ValidateText(string Text)

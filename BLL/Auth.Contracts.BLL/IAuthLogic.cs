@@ -8,7 +8,7 @@ namespace Server.Contracts.BLL
 {
     public interface IAuthLogic
     {
-        bool CheckServerAuth(string url, string login, string password);
+        Task<bool> CheckServerAuth(string url, string login, string password);
         bool TryServerAuth();
         bool CheckLocalAuth(string pin);
         bool TryLocalAuth(string pin);

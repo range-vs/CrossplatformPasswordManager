@@ -9,7 +9,7 @@ namespace LocalStorage.Core.DAL
 {
     public class LocalStorageDao : ILocalStorageDao
     {
-        public void SaveServerCredentions(string url, string login, string password)
+        public void SaveServerCredentions(string token)
         {
             // TODO: save from file crossplatform!!!
         }

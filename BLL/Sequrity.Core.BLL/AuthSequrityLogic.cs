@@ -18,11 +18,11 @@ namespace Sequrity.Core.BLL
         }
 
 
-        public void CipherServerCredentions(string url, string login, string password)
+        public void CipherServerCredentions(string token)
         {
             if (_localStorageDao != null)
             {
-                _localStorageDao.SaveServerCredentions(url, login, password);
+                _localStorageDao.SaveServerCredentions(token);
             }
         }
 
