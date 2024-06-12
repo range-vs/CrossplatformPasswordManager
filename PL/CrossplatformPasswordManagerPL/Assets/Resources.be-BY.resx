@@ -117,31 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AuthButtonText" xml:space="preserve">
-    <value>Authorization</value>
-  </data>
-  <data name="AuthLoginPlaceholderText" xml:space="preserve">
-    <value>Enter your login...</value>
-  </data>
-  <data name="AuthLoginTitleText" xml:space="preserve">
-    <value>Write your login:</value>
-  </data>
-  <data name="AuthPasswordPlaceholderText" xml:space="preserve">
-    <value>Enter your password...</value>
-  </data>
-  <data name="AuthPasswordTitleText" xml:space="preserve">
-    <value>Write your password:</value>
-  </data>
-  <data name="AuthUrlPlaceholderText" xml:space="preserve">
-    <value>Enter URL your server...</value>
-  </data>
-  <data name="AuthUrlTitleText" xml:space="preserve">
-    <value>Write URL your server:</value>
-  </data>
   <data name="ServerAuthErrorMessageText" xml:space="preserve">
-    <value>Value is can not empty</value>
-  </data>
-  <data name="ServerAuthTitleText" xml:space="preserve">
-    <value>Server properties</value>
+    <value>Значэнне не можа быць пустым</value>
   </data>
 </root>

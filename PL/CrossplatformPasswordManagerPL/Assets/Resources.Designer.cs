@@ -61,11 +61,83 @@ namespace CrossplatformPasswordManagerPL.Assets {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Authorization.
+        /// </summary>
+        public static string AuthButtonText {
+            get {
+                return ResourceManager.GetString("AuthButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Enter your login....
+        /// </summary>
+        public static string AuthLoginPlaceholderText {
+            get {
+                return ResourceManager.GetString("AuthLoginPlaceholderText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Write your login:.
+        /// </summary>
+        public static string AuthLoginTitleText {
+            get {
+                return ResourceManager.GetString("AuthLoginTitleText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Enter your password....
+        /// </summary>
+        public static string AuthPasswordPlaceholderText {
+            get {
+                return ResourceManager.GetString("AuthPasswordPlaceholderText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Write your password:.
+        /// </summary>
+        public static string AuthPasswordTitleText {
+            get {
+                return ResourceManager.GetString("AuthPasswordTitleText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Enter URL your server....
+        /// </summary>
+        public static string AuthUrlPlaceholderText {
+            get {
+                return ResourceManager.GetString("AuthUrlPlaceholderText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Write URL your server:.
+        /// </summary>
+        public static string AuthUrlTitleText {
+            get {
+                return ResourceManager.GetString("AuthUrlTitleText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Value is can not empty.
         /// </summary>
         public static string ServerAuthErrorMessageText {
             get {
                 return ResourceManager.GetString("ServerAuthErrorMessageText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Server properties.
+        /// </summary>
+        public static string ServerAuthTitleText {
+            get {
+                return ResourceManager.GetString("ServerAuthTitleText", resourceCulture);
             }
         }
     }

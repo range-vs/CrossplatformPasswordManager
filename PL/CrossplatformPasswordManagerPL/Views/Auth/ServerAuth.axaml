@@ -12,20 +12,20 @@
 			 x:DataType="vm:ServerAuthViewModel">
 	<Grid>
 		<StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Spacing="14">
-			<TextBlock Text="Server Auth Page" FontSize="18" HorizontalAlignment="Center"></TextBlock>
-			<TextBlock Text="Write url server:" FontSize="16" HorizontalAlignment="Center"></TextBlock>
+			<TextBlock Text="{x:Static assets:Resources.ServerAuthTitleText}" FontSize="18" HorizontalAlignment="Center"></TextBlock>
+			<TextBlock Text="{x:Static assets:Resources.AuthUrlTitleText}" FontSize="16" HorizontalAlignment="Center"></TextBlock>
 			<TextBlock Text="{x:Static assets:Resources.ServerAuthErrorMessageText}" FontSize="10" HorizontalAlignment="Center" Foreground="Red" IsVisible="{Binding IsErrorMessageURL}"></TextBlock>
 			<StackPanel Orientation="Horizontal">
 				<ComboBox ItemsSource="{Binding TypeURL}" SelectedItem="{Binding TypeURLSelectedItem, Mode=TwoWay}"/>
-				<TextBox Text="{Binding URL}" FontSize="16" HorizontalAlignment="Center" Watermark="Enter your url server"></TextBox>
+				<TextBox Text="{Binding URL}" FontSize="16" HorizontalAlignment="Center" Watermark="{x:Static assets:Resources.AuthUrlPlaceholderText}"></TextBox>
 			</StackPanel>
-			<TextBlock Text="Write login:" FontSize="16" HorizontalAlignment="Center"></TextBlock>
+			<TextBlock Text="{x:Static assets:Resources.AuthLoginTitleText}" FontSize="16" HorizontalAlignment="Center"></TextBlock>
 			<TextBlock Text="{x:Static assets:Resources.ServerAuthErrorMessageText}" FontSize="10" HorizontalAlignment="Center" Foreground="Red" IsVisible="{Binding IsErrorMessageLogin}"></TextBlock>
-			<TextBox Text="{Binding Login}" FontSize="16" HorizontalAlignment="Center" Watermark="Enter your login"></TextBox>
-			<TextBlock Text="Write password:" FontSize="16" HorizontalAlignment="Center"></TextBlock>
+			<TextBox Text="{Binding Login}" FontSize="16" HorizontalAlignment="Center" Watermark="{x:Static assets:Resources.AuthLoginPlaceholderText}"></TextBox>
+			<TextBlock Text="{x:Static assets:Resources.AuthPasswordTitleText}" FontSize="16" HorizontalAlignment="Center"></TextBlock>
 			<TextBlock Text="{x:Static assets:Resources.ServerAuthErrorMessageText}" FontSize="10" HorizontalAlignment="Center" Foreground="Red" IsVisible="{Binding IsErrorMessagePassword}"></TextBlock>
-			<TextBox Text="{Binding Password}" FontSize="16" HorizontalAlignment="Center" PasswordChar="*" Watermark="Enter your password"></TextBox>
-			<Button Command="{Binding AuthCommand}" Content="Auth!" HorizontalAlignment="Center" Margin="30" ></Button>
+			<TextBox Text="{Binding Password}" FontSize="16" HorizontalAlignment="Center" PasswordChar="*" Watermark="{x:Static assets:Resources.AuthPasswordPlaceholderText}"></TextBox>
+			<Button Command="{Binding AuthCommand}" Content="{x:Static assets:Resources.AuthButtonText}" HorizontalAlignment="Center" Margin="30" ></Button>
 		</StackPanel>
 		<DockPanel IsVisible="{Binding IsProcessAuth}" Background="rgba(0, 0, 0, 0.8)">
 			<progRing:ProgressRing Width="80"

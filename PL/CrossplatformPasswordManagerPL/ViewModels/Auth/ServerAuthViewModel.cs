@@ -7,6 +7,7 @@ using CrossplatformPasswordManagerPL.Helpers;
 using Database.Contracts.BLL;
 using DynamicData.Binding;
 using Entities.Common;
+using Helpers.Common;
 using Models.Common;
 using Ninject.Common;
 using ReactiveUI;
@@ -37,7 +38,7 @@ public class ServerAuthViewModel : ViewModelBase
     public ICommand AuthCommand { get; set; }
     public ObservableCollection<string> TypeURL { get; set; } = new ObservableCollection<string>()
     {
-        "https", "http"
+        StringKeys.HttpTagLocalAuthPage, StringKeys.HttpsLocalAuthPage
     };
     public string TypeURLSelectedItem { get; set; }
     public bool IsErrorMessageURL
@@ -137,7 +138,6 @@ public class ServerAuthViewModel : ViewModelBase
 }
 
 // TODO
-// добавить ресурсы для PL (весь текст в ресурсы)
-// добавить локализации (пока только Ru - default)
 // доделать сохранение токена в LocalStorage
+// добавить кнопку скрытия/показа пароля на ServerAuthPage
 // начать делать LocalAuth
