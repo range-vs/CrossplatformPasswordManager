@@ -3,6 +3,7 @@ using Autofac.Core;
 using Avalonia.DesignerSupport;
 using Avalonia.Threading;
 using AvaloniaInside.Shell;
+using CrossplatformPasswordManagerPL.Helpers;
 using Database.Contracts.BLL;
 using DynamicData.Binding;
 using Entities.Common;
@@ -112,11 +113,14 @@ public class ServerAuthViewModel : ViewModelBase
         using (var scope = ServiceModule.Container?.BeginLifetimeScope())
         {
             var authLogic = scope?.Resolve<IAuthLogic>();
-            var statusAuth = await authLogic?.CheckServerAuth(URL, Login, Password);
-            if(statusAuth)
+            if (authLogic != null)
             {
-                await _navigationService.NavigateAsync("/local_auth");
-                return;
+                var statusAuth = await authLogic.CheckServerAuth(URL, Login, Password);
+                if (statusAuth)
+                {
+                    await PageLocator.StepToLocalAuthPage(_navigationService);
+                    return;
+                }
             }
         }
         IsProcessAuth = false; 
@@ -131,3 +135,9 @@ public class ServerAuthViewModel : ViewModelBase
         return string.Empty;
     }
 }
+
+// TODO
+// добавить ресурсы для PL (весь текст в ресурсы)
+// добавить локализации (пока только Ru - default)
+// доделать сохранение токена в LocalStorage
+// начать делать LocalAuth
