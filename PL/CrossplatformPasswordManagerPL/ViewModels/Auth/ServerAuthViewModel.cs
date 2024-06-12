@@ -25,11 +25,11 @@ namespace CrossplatformPasswordManagerPL.ViewModels.Auth;
 public class ServerAuthViewModel : ViewModelBase
 {
     private readonly INavigator _navigationService;
-    private string _errorMessageUrl;
+    private bool _isErrorMessageUrl;
     private string _url;
-    private string _errorMessageLogin;
+    private bool _isErrorMessageLogin;
     private string _login;
-    private string _errorMessagePassword;
+    private bool _isErrorMessagePassword;
     private string _password;
     private bool _isProsessAuth;
 
@@ -40,10 +40,10 @@ public class ServerAuthViewModel : ViewModelBase
         "https", "http"
     };
     public string TypeURLSelectedItem { get; set; }
-    public string ErrorMessageURL
+    public bool IsErrorMessageURL
     {
-        get => _errorMessageUrl;
-        set => this.RaiseAndSetIfChanged(ref _errorMessageUrl, value);
+        get => _isErrorMessageUrl;
+        set => this.RaiseAndSetIfChanged(ref _isErrorMessageUrl, value);
     }
 
     public string URL
@@ -52,13 +52,13 @@ public class ServerAuthViewModel : ViewModelBase
         set
         {
             this.RaiseAndSetIfChanged(ref _url, value);
-            ErrorMessageURL = ValidateText(_url);
+            IsErrorMessageURL = ValidateText(_url);
         }
     }
-    public string ErrorMessageLogin
+    public bool IsErrorMessageLogin
     {
-        get => _errorMessageLogin;
-        set => this.RaiseAndSetIfChanged(ref _errorMessageLogin, value);
+        get => _isErrorMessageLogin;
+        set => this.RaiseAndSetIfChanged(ref _isErrorMessageLogin, value);
     }
     public string Login
     {
@@ -66,13 +66,13 @@ public class ServerAuthViewModel : ViewModelBase
         set
         {
             this.RaiseAndSetIfChanged(ref _login, value);
-            ErrorMessageLogin = ValidateText(_login);
+            IsErrorMessageLogin = ValidateText(_login);
         }
     }
-    public string ErrorMessagePassword
+    public bool IsErrorMessagePassword
     {
-        get => _errorMessagePassword;
-        set => this.RaiseAndSetIfChanged(ref _errorMessagePassword, value);
+        get => _isErrorMessagePassword;
+        set => this.RaiseAndSetIfChanged(ref _isErrorMessagePassword, value);
     }
     public string Password
     {
@@ -80,7 +80,7 @@ public class ServerAuthViewModel : ViewModelBase
         set
         {
             this.RaiseAndSetIfChanged(ref _password, value);
-            ErrorMessagePassword = ValidateText(_password);
+            IsErrorMessagePassword = ValidateText(_password);
         }
     }
     public bool IsProcessAuth
@@ -92,7 +92,7 @@ public class ServerAuthViewModel : ViewModelBase
     public ServerAuthViewModel(INavigator navigationService)
     {
         TypeURLSelectedItem = TypeURL[0];
-        ErrorMessageURL = ErrorMessageLogin = ErrorMessagePassword = string.Empty;
+        IsErrorMessageURL = IsErrorMessageLogin = IsErrorMessagePassword = false;
         IsProcessAuth = false;
 
         _navigationService = navigationService;
@@ -102,10 +102,10 @@ public class ServerAuthViewModel : ViewModelBase
     private async Task TryServerAuth()
     {
         IsProcessAuth = true;
-        ErrorMessageURL = ValidateText(URL);
-        ErrorMessageLogin = ValidateText(Login);
-        ErrorMessagePassword = ValidateText(Password);
-        if (ErrorMessageURL != string.Empty || ErrorMessageLogin != string.Empty || ErrorMessagePassword != string.Empty)
+        IsErrorMessageURL = ValidateText(URL);
+        IsErrorMessageURL = ValidateText(Login);
+        IsErrorMessageURL = ValidateText(Password);
+        if (IsErrorMessageURL || IsErrorMessageLogin || IsErrorMessagePassword)
         {
             IsProcessAuth = false;
             return;
@@ -126,13 +126,13 @@ public class ServerAuthViewModel : ViewModelBase
         IsProcessAuth = false; 
     }
 
-    public string ValidateText(string Text)
+    public bool ValidateText(string Text)
     {
         if (string.IsNullOrEmpty(Text))
         {
-            return "Значение не может быть пустым";
+            return true;
         }
-        return string.Empty;
+        return false;
     }
 }
 

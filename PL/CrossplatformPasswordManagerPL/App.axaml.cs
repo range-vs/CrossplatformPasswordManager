@@ -4,8 +4,10 @@ using Avalonia.Markup.Xaml;
 using CrossplatformPasswordManagerPL.Views.PlatformSpecific.Windows;
 using CrossplatformPasswordManagerPL.ViewModels;
 using CrossplatformPasswordManagerPL.Views;
+using System.Globalization;
 
 using Ninject.Common;
+using System.Threading;
 
 namespace CrossplatformPasswordManagerPL;
 
@@ -19,6 +21,7 @@ public partial class App : Application
 
     public override void OnFrameworkInitializationCompleted()
     {
+        Assets.Resources.Culture = new CultureInfo("ru-RU");
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
             desktop.MainWindow = new Window

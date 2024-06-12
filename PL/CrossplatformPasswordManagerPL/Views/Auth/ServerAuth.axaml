@@ -3,6 +3,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       		 xmlns:progRing="clr-namespace:AvaloniaProgressRing;assembly=AvaloniaProgressRing"
+			 xmlns:assets="clr-namespace:CrossplatformPasswordManagerPL.Assets"
 			 mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="CrossplatformPasswordManagerPL.Views.Auth.ServerAuth"
              NavigationBar.Visible="False"
@@ -13,19 +14,16 @@
 		<StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Spacing="14">
 			<TextBlock Text="Server Auth Page" FontSize="18" HorizontalAlignment="Center"></TextBlock>
 			<TextBlock Text="Write url server:" FontSize="16" HorizontalAlignment="Center"></TextBlock>
-			<TextBlock Text="{Binding ErrorMessageURL}" FontSize="10" HorizontalAlignment="Center" Foreground="Red" IsVisible="{Binding ErrorMessageURL,  
-                       Converter={x:Static StringConverters.IsNotNullOrEmpty}}"></TextBlock>
+			<TextBlock Text="{x:Static assets:Resources.ServerAuthErrorMessageText}" FontSize="10" HorizontalAlignment="Center" Foreground="Red" IsVisible="{Binding IsErrorMessageURL}"></TextBlock>
 			<StackPanel Orientation="Horizontal">
 				<ComboBox ItemsSource="{Binding TypeURL}" SelectedItem="{Binding TypeURLSelectedItem, Mode=TwoWay}"/>
 				<TextBox Text="{Binding URL}" FontSize="16" HorizontalAlignment="Center" Watermark="Enter your url server"></TextBox>
 			</StackPanel>
 			<TextBlock Text="Write login:" FontSize="16" HorizontalAlignment="Center"></TextBlock>
-			<TextBlock Text="{Binding ErrorMessageLogin}" FontSize="10" HorizontalAlignment="Center" Foreground="Red" IsVisible="{Binding ErrorMessageLogin,  
-                       Converter={x:Static StringConverters.IsNotNullOrEmpty}}"></TextBlock>
+			<TextBlock Text="{x:Static assets:Resources.ServerAuthErrorMessageText}" FontSize="10" HorizontalAlignment="Center" Foreground="Red" IsVisible="{Binding IsErrorMessageLogin}"></TextBlock>
 			<TextBox Text="{Binding Login}" FontSize="16" HorizontalAlignment="Center" Watermark="Enter your login"></TextBox>
 			<TextBlock Text="Write password:" FontSize="16" HorizontalAlignment="Center"></TextBlock>
-			<TextBlock Text="{Binding ErrorMessagePassword}" FontSize="10" HorizontalAlignment="Center" Foreground="Red" IsVisible="{Binding ErrorMessagePassword,  
-                       Converter={x:Static StringConverters.IsNotNullOrEmpty}}"></TextBlock>
+			<TextBlock Text="{x:Static assets:Resources.ServerAuthErrorMessageText}" FontSize="10" HorizontalAlignment="Center" Foreground="Red" IsVisible="{Binding IsErrorMessagePassword}"></TextBlock>
 			<TextBox Text="{Binding Password}" FontSize="16" HorizontalAlignment="Center" PasswordChar="*" Watermark="Enter your password"></TextBox>
 			<Button Command="{Binding AuthCommand}" Content="Auth!" HorizontalAlignment="Center" Margin="30" ></Button>
 		</StackPanel>
