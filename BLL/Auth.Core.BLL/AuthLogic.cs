@@ -31,7 +31,7 @@ namespace Server.Core.BLL
             string token = "this_token";
             if (_authSequrityLogic != null)
                 _authSequrityLogic.CipherServerCredentions(token);
-            return await Task.FromResult(true);
+            return await Task.FromResult(false);
         }
 
         public bool TryServerAuth()

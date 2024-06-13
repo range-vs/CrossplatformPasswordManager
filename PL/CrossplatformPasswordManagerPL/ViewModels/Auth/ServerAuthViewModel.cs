@@ -104,8 +104,8 @@ public class ServerAuthViewModel : ViewModelBase
     {
         IsProcessAuth = true;
         IsErrorMessageURL = ValidateText(URL);
-        IsErrorMessageURL = ValidateText(Login);
-        IsErrorMessageURL = ValidateText(Password);
+        IsErrorMessageLogin = ValidateText(Login);
+        IsErrorMessagePassword = ValidateText(Password);
         if (IsErrorMessageURL || IsErrorMessageLogin || IsErrorMessagePassword)
         {
             IsProcessAuth = false;
@@ -138,6 +138,7 @@ public class ServerAuthViewModel : ViewModelBase
 }
 
 // TODO
-// доделать сохранение токена в LocalStorage
+// зашифровать и сохранить токен сервера
+// сделать табличку (или надпись), что серверная авторизация не успешна (над кнопкой Auth)
 // добавить кнопку скрытия/показа пароля на ServerAuthPage
 // начать делать LocalAuth

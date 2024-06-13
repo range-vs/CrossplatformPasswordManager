@@ -14,21 +14,6 @@
 		<vm:CommonViewModel />
 	</Design.DataContext>
 
-	<!--<StackPanel Background="Black">
-		<Button Content="{Binding ButtonName^, Mode=OneWay, FallbackValue='Click me!'}" Command="{Binding Click}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
-		<TextBlock Text="{Binding Greeting^, FallbackValue='Welcome to Avalonia!'}}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
-		<ListBox ItemsSource="{Binding Groups^}">
-			<ListBox.ItemTemplate>
-				<DataTemplate>
-					<StackPanel Orientation="Horizontal">
-						<TextBlock Text="{Binding Id}"/>
-						<TextBlock Text="{Binding Name}" Margin="0,0,10,0"/>
-					</StackPanel>
-				</DataTemplate>
-			</ListBox.ItemTemplate>
-		</ListBox>
-	</StackPanel>-->
-
 	<ShellView Name="ShellViewMain"
 		   HorizontalAlignment="Stretch"
 		   VerticalAlignment="Stretch"

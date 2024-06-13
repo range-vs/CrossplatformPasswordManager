@@ -8,6 +8,7 @@ using AvaloniaInside.Shell.Platform;
 using Database.Contracts.BLL;
 using DynamicData.Binding;
 using Entities.Common;
+using Helpers.Common;
 using Models.Common;
 using Ninject.Common;
 using ReactiveUI;
@@ -80,7 +81,7 @@ public class CommonViewModel : ViewModelBase
 
     public CommonViewModel()
     {
-        StartPage = "/server_auth";
+        StartPage = StringKeys.ServerAuthPage;
         //Click = ReactiveCommand.Create(() =>
         //{
         //    // Debug.WriteLine(Greeting);

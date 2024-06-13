@@ -20,6 +20,7 @@ namespace Sequrity.Core.BLL
 
         public void CipherServerCredentions(string token)
         {
+            // TODO: шифруем токен. Выбрать способ
             if (_localStorageDao != null)
             {
                 _localStorageDao.SaveServerCredentions(token);

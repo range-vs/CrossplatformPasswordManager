@@ -11,7 +11,7 @@ namespace LocalStorage.Core.DAL
     {
         public void SaveServerCredentions(string token)
         {
-            // TODO: save from file crossplatform!!!
+            // TODO: записать зашифрованный токен со способом расшифровки в файл, но КРОССПЛАТФОРМЕННО
         }
         public string GetServerToken()
         {
