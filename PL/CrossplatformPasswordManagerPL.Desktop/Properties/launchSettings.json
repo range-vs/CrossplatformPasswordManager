@@ -5,7 +5,7 @@
     },
     "WSL": {
       "commandName": "WSL2",
-      "distributionName": "Debian"
+      "distributionName": "Ubuntu"
     }
   }
 }
