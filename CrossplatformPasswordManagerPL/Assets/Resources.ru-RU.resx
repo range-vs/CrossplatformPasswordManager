@@ -139,9 +139,12 @@
     <value>Введите URL вашего сервера:</value>
   </data>
   <data name="ServerAuthErrorMessageText" xml:space="preserve">
-    <value>Значение не может быть пустым</value>
+    <value>Неверные URL, логин или пароль</value>
   </data>
   <data name="ServerAuthTitleText" xml:space="preserve">
     <value>Настройки сервера</value>
+  </data>
+  <data name="ServerAuthValidationErrorMessageText" xml:space="preserve">
+    <value>Значение не может быть пустым</value>
   </data>
 </root>

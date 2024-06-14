@@ -139,9 +139,12 @@
     <value>Write URL your server:</value>
   </data>
   <data name="ServerAuthErrorMessageText" xml:space="preserve">
-    <value>Value is can not empty</value>
+    <value>URL, login or password is not correct</value>
   </data>
   <data name="ServerAuthTitleText" xml:space="preserve">
     <value>Server properties</value>
+  </data>
+  <data name="ServerAuthValidationErrorMessageText" xml:space="preserve">
+    <value>Value is can not empty</value>
   </data>
 </root>

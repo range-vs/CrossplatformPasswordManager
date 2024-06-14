@@ -33,7 +33,7 @@ public class ServerAuthViewModel : ViewModelBase
     private bool _isErrorMessagePassword;
     private string _password;
     private bool _isProsessAuth;
-
+    private bool _isAuthError;
 
     public ICommand AuthCommand { get; set; }
     public ObservableCollection<string> TypeURL { get; set; } = new ObservableCollection<string>()
@@ -89,11 +89,16 @@ public class ServerAuthViewModel : ViewModelBase
         get => _isProsessAuth;
         set => this.RaiseAndSetIfChanged(ref _isProsessAuth, value);
     }
+    public bool IsAuthError
+    {
+        get => _isAuthError;
+        set => this.RaiseAndSetIfChanged(ref _isAuthError, value);
+    }
 
     public ServerAuthViewModel(INavigator navigationService)
     {
         TypeURLSelectedItem = TypeURL[0];
-        IsErrorMessageURL = IsErrorMessageLogin = IsErrorMessagePassword = false;
+        IsErrorMessageURL = IsErrorMessageLogin = IsErrorMessagePassword = IsAuthError = false;
         IsProcessAuth = false;
 
         _navigationService = navigationService;
@@ -102,6 +107,7 @@ public class ServerAuthViewModel : ViewModelBase
 
     private async Task TryServerAuth()
     {
+        IsAuthError = false;
         IsProcessAuth = true;
         IsErrorMessageURL = ValidateText(URL);
         IsErrorMessageLogin = ValidateText(Login);
@@ -124,6 +130,7 @@ public class ServerAuthViewModel : ViewModelBase
                 }
             }
         }
+        IsAuthError = true;
         IsProcessAuth = false; 
     }
 
@@ -139,6 +146,5 @@ public class ServerAuthViewModel : ViewModelBase
 
 // TODO
 // зашифровать и сохранить токен сервера
-// сделать табличку (или надпись), что серверная авторизация не успешна (над кнопкой Auth)
 // добавить кнопку скрытия/показа пароля на ServerAuthPage
 // начать делать LocalAuth

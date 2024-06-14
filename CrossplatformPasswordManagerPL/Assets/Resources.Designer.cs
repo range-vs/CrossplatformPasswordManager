@@ -131,7 +131,18 @@ namespace CrossplatformPasswordManagerPL.Assets {
                 return ResourceManager.GetString("ServerAuthErrorMessageText", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Value is can not empty.
+        /// </summary>
+        public static string ServerAuthValidationErrorMessageText
+        {
+            get
+            {
+                return ResourceManager.GetString("ServerAuthValidationErrorMessageText", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Ищет локализованную строку, похожую на Server properties.
         /// </summary>
