@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    
+    
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Models.Common\Models.Common.csproj" />
+    <ProjectReference Include="..\Database.Contracts.DAL\Database.Contracts.DAL.csproj" />
+    <ProjectReference Include="..\LocalStorage.Contratcs.DAL\LocalStorage.Contratcs.DAL.csproj" />
+    <ProjectReference Include="..\Sequrity.Contracts.BLL\Sequrity.Contracts.BLL.csproj" />
+  </ItemGroup>
+
+</Project>
