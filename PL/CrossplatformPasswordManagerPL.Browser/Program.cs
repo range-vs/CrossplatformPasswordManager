@@ -12,11 +12,14 @@ using CrossplatformPasswordManagerPL;
 
 internal partial class Program
 {
-    private static async Task Main(string[] args) => await BuildAvaloniaApp()
+    private static async Task Main(string[] args)
+    {
+        await BuildAvaloniaApp()
             .WithInterFont()
             .UseReactiveUI()
             .UseShell()
             .StartBrowserAppAsync("out");
+    }
 
     public static AppBuilder BuildAvaloniaApp()
         => AppBuilder.Configure<App>();

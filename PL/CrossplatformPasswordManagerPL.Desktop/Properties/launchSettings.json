@@ -3,9 +3,13 @@
     "CrossplatformPasswordManagerPL.Desktop": {
       "commandName": "Project"
     },
-    "WSL": {
+    "WSL: Ubuntu": {
       "commandName": "WSL2",
       "distributionName": "Ubuntu"
+    },
+    "WSL: Debian": {
+      "commandName": "WSL2",
+      "distributionName": "Debian"
     }
   }
 }
