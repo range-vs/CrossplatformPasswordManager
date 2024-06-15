@@ -9,18 +9,33 @@ namespace LocalStorage.Core.DAL
 {
     public class LocalStorageDao : ILocalStorageDao
     {
-        public void SaveServerCredentions(string token)
+        public void SaveAesCredentions(byte[] key, byte[] iv)
+        {
+            // TODO: пишем в закрытый файл(в ведре в закрытую область, в винде рядом с приложением)
+        }
+        public byte[] GetAesKey()
+        {
+            return null; // запрашиваем ключ кроссплатформенно и возвращаем
+        }
+        public byte[] GetAesIV()
+        {
+            return null; // запрашиваем iv кроссплатформенно и возвращаем
+        }
+
+
+        public void SaveServerCredentions(string url, byte[] token)
         {
             // TODO: записать зашифрованный токен со способом расшифровки в файл, но КРОССПЛАТФОРМЕННО
         }
-        public string GetServerToken()
-        {
-            return "";
-        }
         public string GetServerUrl()
         {
-            return "";
+            return "";  // запрашиваем server url кроссплатформенно и возвращаем
         }
+        public byte[] GetServerToken()
+        {
+            return null;  // запрашиваем зашифрованный токен кроссплатформенно и возвращаем
+        }
+
 
         public void SaveLocalCredentions(string pin)
         {

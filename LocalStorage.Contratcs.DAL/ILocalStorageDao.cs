@@ -8,9 +8,14 @@ namespace LocalStorage.Contratcs.DAL
 {
     public interface ILocalStorageDao
     {
-        void SaveServerCredentions(string token);
-        string GetServerToken();
+        void SaveAesCredentions(byte[] key, byte[] iv);
+        byte[] GetAesKey();
+        byte[] GetAesIV();
+
+        void SaveServerCredentions(string url, byte[] token);
         string GetServerUrl();
+        byte[] GetServerToken();
+
         void SaveLocalCredentions(string pin);
         string GetPin();
         void SaveSystemCredentions();

@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Helpers.Common\Helpers.Common.csproj" />
     <ProjectReference Include="..\Models.Common\Models.Common.csproj" />
     <ProjectReference Include="..\Database.Contracts.DAL\Database.Contracts.DAL.csproj" />
     <ProjectReference Include="..\LocalStorage.Contratcs.DAL\LocalStorage.Contratcs.DAL.csproj" />

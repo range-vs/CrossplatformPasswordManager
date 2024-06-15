@@ -24,22 +24,37 @@ namespace Server.Core.BLL
 
         public async Task<bool> CheckServerAuth(string url, string login, string password)
         {
-            // TODO
-            // обращаемся к нашему серваку, пытаемся получить у него token
-            // в слечае успеха передаем токен в LocalStorage и возвращем успех в PL
+            // TODO: переделать на обращение к серверу
             await Task.Delay(4000);
             string token = "this_token";
+            var status = false;
             if (_authSequrityLogic != null)
-                _authSequrityLogic.CipherServerCredentions(token);
-            return await Task.FromResult(false);
+            {
+                _authSequrityLogic.CipherServerCredentions(url, token);
+                status = true;
+            }
+            return await Task.FromResult(status);
         }
 
         public bool TryServerAuth()
         {
-            // TODO запрос к LocalStorage, есть ли активный логин в систему. Если нет - опять предложить
-            // проверяем, валиден ли токен (связь с сервером)
-            // выполняется только при наличии инета
-            return true;
+            var status = false;
+            if (_authSequrityLogic != null)
+            {
+                var token = _authSequrityLogic.DecipherServerCredentions();
+                if (token != null || token != string.Empty)
+                {
+                    var isTokenValid = false;
+                    // TODO: test connect to server
+                    isTokenValid = true;
+                    //
+                    if(isTokenValid)
+                    {
+                        status = true;
+                    }
+                }
+            }
+            return status;
         }
 
         public bool CheckLocalAuth(string pin)
