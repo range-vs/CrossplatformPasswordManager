@@ -14,7 +14,7 @@ using LocalStorage.Contratcs.DAL;
 
 namespace Ninject.Common
 {
-    public static class ServiceModule // TODO: сделать юнит тест на прогонку всех DI
+    public static class ServiceModule
     {
         public static IContainer? Container { get; set; } = null;
 
