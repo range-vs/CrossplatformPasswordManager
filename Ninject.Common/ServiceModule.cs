@@ -32,6 +32,27 @@ namespace Ninject.Common
                 builder.RegisterType<AuthLogic>().As<IAuthLogic>();
                 builder.RegisterType<AuthSequrityLogic>().As<IAuthSequrityLogic>();
 
+                // Platform Specific
+                if (OperatingSystem.IsWindows())
+                {
+
+                }
+                else if (OperatingSystem.IsLinux())
+                {
+
+                }
+                else if (OperatingSystem.IsAndroid())
+                {
+
+                }
+                else if (OperatingSystem.IsIOS())
+                {
+
+                }
+                else if(OperatingSystem.IsBrowser())
+                {
+
+                }
                 // ctor DI
                 Container = builder.Build();
             }
