@@ -4,6 +4,11 @@ using Avalonia;
 using Avalonia.Android;
 using Avalonia.ReactiveUI;
 using AvaloniaInside.Shell;
+using CrossplatformPasswordManagerPL.Android.Files;
+using Ninject.Common;
+using PlatformSpecific.Contracts.PSL;
+using System;
+using System.Collections.Generic;
 
 namespace CrossplatformPasswordManagerPL.Android;
 
@@ -17,6 +22,11 @@ public class MainActivity : AvaloniaMainActivity<App>
 {
     protected override AppBuilder CustomizeAppBuilder(AppBuilder builder)
     {
+        var types = new Dictionary<Type, Type>
+        {
+            { typeof(FilesProvider), typeof(IFilesProviderPlatformSpecific) }
+        };
+        ServiceModule.InitForPlatform(types);
         return base.CustomizeAppBuilder(builder)
             .WithInterFont()
             .UseShell()

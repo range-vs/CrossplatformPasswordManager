@@ -11,50 +11,66 @@ using Sequrity.Contracts.BLL;
 using Sequrity.Core.BLL;
 using LocalStorage.Core.DAL;
 using LocalStorage.Contratcs.DAL;
+using PlatformSpecific.Contracts.PSL;
+using System.Collections;
 
 namespace Ninject.Common
 {
     public static class ServiceModule
     {
+        private static ContainerBuilder _builder = new ContainerBuilder();
         public static IContainer? Container { get; set; } = null;
+
+        public static bool InitForPlatform(Dictionary<Type, Type> platformTypes)
+        {
+            try
+            {
+                foreach (var type in platformTypes)
+                {
+                    _builder.RegisterType(type.Key).As(type.Value);
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+                return false;
+            }
+            return true;
+        }
 
         public static bool Init()
         {
             try
             {
-                var builder = new ContainerBuilder();
                 // DAL
-                builder.RegisterType<GroupDbDao>().As<IGroupDbDao>();
-                builder.RegisterType<LocalStorageDao>().As<ILocalStorageDao>();
+                _builder.RegisterType<GroupDbDao>().As<IGroupDbDao>();
+                _builder.RegisterType<LocalStorageDao>().As<ILocalStorageDao>();
 
                 // BLL
-                builder.RegisterType<GroupLogic>().As<IGroupLogic>();
-                builder.RegisterType<AuthLogic>().As<IAuthLogic>();
-                builder.RegisterType<AuthSequrityLogic>().As<IAuthSequrityLogic>();
+                _builder.RegisterType<GroupLogic>().As<IGroupLogic>();
+                _builder.RegisterType<AuthLogic>().As<IAuthLogic>();
+                _builder.RegisterType<AuthSequrityLogic>().As<IAuthSequrityLogic>();
 
-                // Platform Specific
-                if (OperatingSystem.IsWindows())
-                {
+                //// Platform Specific
+                //if (OperatingSystem.IsWindows())
+                //{
+                //    //_builder.RegisterType<PlatformSpecific.Windows.PSL.FilesProviderPlatformSpecific>().As<IFilesProviderPlatformSpecific>();
+                //}
+                //else if (OperatingSystem.IsLinux())
+                //{
+                //    _builder.RegisterType<PlatformSpecific.Linux.PSL.FilesProviderPlatformSpecific>().As<IFilesProviderPlatformSpecific>();
+                //}
+                //else if (OperatingSystem.IsAndroid())
+                //{
+                //    //_builder.RegisterType<PlatformSpecific.Android.PSL.FilesProviderPlatformSpecific>().As<IFilesProviderPlatformSpecific>();
+                //}
+                //else if(OperatingSystem.IsBrowser())
+                //{
+                //    _builder.RegisterType<PlatformSpecific.Browser.PSL.FilesProviderPlatformSpecific>().As<IFilesProviderPlatformSpecific>();
+                //}
 
-                }
-                else if (OperatingSystem.IsLinux())
-                {
-
-                }
-                else if (OperatingSystem.IsAndroid())
-                {
-
-                }
-                else if (OperatingSystem.IsIOS())
-                {
-
-                }
-                else if(OperatingSystem.IsBrowser())
-                {
-
-                }
                 // ctor DI
-                Container = builder.Build();
+                Container = _builder.Build();
             }
             catch(Exception ex)
             {

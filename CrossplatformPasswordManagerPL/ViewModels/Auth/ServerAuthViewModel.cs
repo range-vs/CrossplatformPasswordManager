@@ -10,6 +10,7 @@ using Entities.Common;
 using Helpers.Common;
 using Models.Common;
 using Ninject.Common;
+using PlatformSpecific.Contracts.PSL;
 using ReactiveUI;
 using Server.Contracts.BLL;
 using System.Collections.Generic;
@@ -97,6 +98,11 @@ public class ServerAuthViewModel : ViewModelBase
 
     public ServerAuthViewModel(INavigator navigationService)
     {
+        using (var scope = ServiceModule.Container?.BeginLifetimeScope()) // TODO: удалить, это тест
+        {
+            var filesProvider = scope?.Resolve<IFilesProviderPlatformSpecific>();
+        }
+
         TypeURLSelectedItem = TypeURL[0];
         IsErrorMessageURL = IsErrorMessageLogin = IsErrorMessagePassword = IsAuthError = false;
         IsProcessAuth = false;

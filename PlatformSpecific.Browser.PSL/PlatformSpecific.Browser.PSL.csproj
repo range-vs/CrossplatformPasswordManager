@@ -8,4 +8,8 @@
     
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\PlatformSpecific.Contracts.PSL\PlatformSpecific.Contracts.PSL.csproj" />
+  </ItemGroup>
+
 </Project>

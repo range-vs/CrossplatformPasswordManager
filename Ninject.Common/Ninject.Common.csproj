@@ -17,6 +17,7 @@
     <ProjectReference Include="..\Auth.Core.BLL\Auth.Core.BLL.csproj" />
     <ProjectReference Include="..\Database.Contracts.BLL\Database.Contracts.BLL.csproj" />
     <ProjectReference Include="..\Database.Core.BLL\Database.Core.BLL.csproj" />
+    <ProjectReference Include="..\PlatformSpecific.Contracts.PSL\PlatformSpecific.Contracts.PSL.csproj" />
     <ProjectReference Include="..\Sequrity.Core.BLL\Sequrity.Core.BLL.csproj" />
     <ProjectReference Include="..\Database.Contracts.DAL\Database.Contracts.DAL.csproj" />
     <ProjectReference Include="..\Database.Core.DAL\Database.Core.DAL.csproj" />

@@ -1,7 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
+using Autofac.Core;
 using Avalonia;
 using Avalonia.ReactiveUI;
 using AvaloniaInside.Shell;
+using CrossplatformPasswordManagerPL.Desktop.Files;
+using Ninject.Common;
+using PlatformSpecific.Contracts.PSL;
 
 namespace CrossplatformPasswordManagerPL.Desktop;
 
@@ -16,10 +21,17 @@ sealed class Program
 
     // Avalonia configuration, don't remove; also used by visual designer.
     public static AppBuilder BuildAvaloniaApp()
-        => AppBuilder.Configure<App>()
+    {
+        var types = new Dictionary<Type, Type>
+        {
+            { typeof(FilesProvider), typeof(IFilesProviderPlatformSpecific) }
+        };
+        ServiceModule.InitForPlatform(types);
+        return AppBuilder.Configure<App>()
             .UsePlatformDetect()
             .WithInterFont()
             .UseShell()
             .LogToTrace()
             .UseReactiveUI();
+    }
 }
