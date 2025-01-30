@@ -22,11 +22,9 @@ sealed class Program
     // Avalonia configuration, don't remove; also used by visual designer.
     public static AppBuilder BuildAvaloniaApp()
     {
-        var types = new Dictionary<Type, Type>
-        {
-            { typeof(FilesProvider), typeof(IFilesProviderPlatformSpecific) }
-        };
-        ServiceModule.InitForPlatform(types);
+        ServiceModule.InitForPlatform(
+            new KeyValuePair<Type, Type>(typeof(FilesProvider), typeof(IFilesProviderPlatformSpecific))
+        );
         return AppBuilder.Configure<App>()
             .UsePlatformDetect()
             .WithInterFont()

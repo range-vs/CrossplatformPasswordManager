@@ -12,11 +12,9 @@ public class Application
     // This is the main entry point of the application.
     static void Main(string[] args)
     {
-        var types = new Dictionary<Type, Type>
-        {
-            { typeof(FilesProvider), typeof(IFilesProviderPlatformSpecific) }
-        };
-        ServiceModule.InitForPlatform(types);
+        ServiceModule.InitForPlatform(
+             new KeyValuePair<Type, Type>(typeof(FilesProvider), typeof(IFilesProviderPlatformSpecific))
+         );
         UIApplication.Main(args, null, typeof(AppDelegate));
     }
 }

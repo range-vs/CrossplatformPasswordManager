@@ -22,11 +22,9 @@ public class MainActivity : AvaloniaMainActivity<App>
 {
     protected override AppBuilder CustomizeAppBuilder(AppBuilder builder)
     {
-        var types = new Dictionary<Type, Type>
-        {
-            { typeof(FilesProvider), typeof(IFilesProviderPlatformSpecific) }
-        };
-        ServiceModule.InitForPlatform(types);
+        ServiceModule.InitForPlatform(
+            new KeyValuePair<Type, Type>(typeof(FilesProvider), typeof(IFilesProviderPlatformSpecific))
+        );
         return base.CustomizeAppBuilder(builder)
             .WithInterFont()
             .UseShell()

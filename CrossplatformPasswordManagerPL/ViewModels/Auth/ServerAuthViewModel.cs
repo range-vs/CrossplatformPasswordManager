@@ -98,11 +98,6 @@ public class ServerAuthViewModel : ViewModelBase
 
     public ServerAuthViewModel(INavigator navigationService)
     {
-        using (var scope = ServiceModule.Container?.BeginLifetimeScope()) // TODO: удалить, это тест
-        {
-            var filesProvider = scope?.Resolve<IFilesProviderPlatformSpecific>();
-        }
-
         TypeURLSelectedItem = TypeURL[0];
         IsErrorMessageURL = IsErrorMessageLogin = IsErrorMessagePassword = IsAuthError = false;
         IsProcessAuth = false;

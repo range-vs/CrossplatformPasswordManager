@@ -23,11 +23,9 @@ internal sealed partial class Program
 
     public static AppBuilder BuildAvaloniaApp()
     {
-        var types = new Dictionary<Type, Type>
-        {
-            { typeof(FilesProvider), typeof(IFilesProviderPlatformSpecific) }
-        };
-        ServiceModule.InitForPlatform(types);
+        ServiceModule.InitForPlatform(
+            new KeyValuePair<Type, Type>(typeof(FilesProvider), typeof(IFilesProviderPlatformSpecific))
+        );
         return AppBuilder.Configure<App>();
     }
 }

@@ -21,7 +21,7 @@ namespace Ninject.Common
         private static ContainerBuilder _builder = new ContainerBuilder();
         public static IContainer? Container { get; set; } = null;
 
-        public static bool InitForPlatform(Dictionary<Type, Type> platformTypes)
+        public static bool InitForPlatform(params KeyValuePair<Type, Type> [] platformTypes)
         {
             try
             {
