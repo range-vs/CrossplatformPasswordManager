@@ -21,6 +21,24 @@ namespace Ninject.Common
         private static ContainerBuilder _builder = new ContainerBuilder();
         public static IContainer? Container { get; set; } = null;
 
+        public static bool InitForPlatform(params KeyValuePair<object, Type>[] platformTypes)
+        {
+            try
+            {
+                foreach (var type in platformTypes)
+                {
+                    _builder.RegisterInstance(type.Key).As(type.Value);
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+                return false;
+            }
+
+            return true;
+        }
+
         public static bool InitForPlatform(params KeyValuePair<Type, Type> [] platformTypes)
         {
             try
@@ -35,6 +53,7 @@ namespace Ninject.Common
                 Debug.WriteLine(ex);
                 return false;
             }
+
             return true;
         }
 
