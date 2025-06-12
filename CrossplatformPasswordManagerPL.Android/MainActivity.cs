@@ -5,8 +5,10 @@ using Avalonia.Android;
 using Avalonia.ReactiveUI;
 using AvaloniaInside.Shell;
 using CrossplatformPasswordManagerPL.Android.Files;
+using CrossplatformPasswordManagerPL.Android.Sequrity;
 using Ninject.Common;
 using PlatformSpecific.Contracts.PSL;
+using PlatformSpecific.Contracts.PSL.Sequrity;
 using System;
 using System.Collections.Generic;
 
@@ -23,7 +25,8 @@ public class MainActivity : AvaloniaMainActivity<App>
     protected override AppBuilder CustomizeAppBuilder(AppBuilder builder)
     {
         ServiceModule.InitForPlatform(
-            new KeyValuePair<Type, Type>(typeof(FilesProvider), typeof(IFilesProviderPlatformSpecific))
+            new KeyValuePair<Type, Type>(typeof(FilesProvider), typeof(IFilesProviderPlatformSpecific)),
+            new KeyValuePair<Type, Type>(typeof(OSAuth), typeof(IOSAuthPlatformSpecific))
         );
         return base.CustomizeAppBuilder(builder)
             .WithInterFont()

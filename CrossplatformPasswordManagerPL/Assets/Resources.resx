@@ -159,6 +159,15 @@
   <data name="LocalAuthValidationPINsErrorMessageText" xml:space="preserve">
     <value>PIN is not equals!</value>
   </data>
+  <data name="OSAuthErrorText" xml:space="preserve">
+    <value>OS auth not valid!</value>
+  </data>
+  <data name="OSAuthProcessText" xml:space="preserve">
+    <value>Requesting OS auth...</value>
+  </data>
+  <data name="RepeatAuthButtonText" xml:space="preserve">
+    <value>Repeat request OS auth</value>
+  </data>
   <data name="ServerAuthErrorMessageText" xml:space="preserve">
     <value>URL, login or password is not correct</value>
   </data>

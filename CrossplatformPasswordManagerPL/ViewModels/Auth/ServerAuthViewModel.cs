@@ -147,4 +147,3 @@ public class ServerAuthViewModel : ViewModelBase
 // ТЕСТ!
 
 // добавить кнопку скрытия/показа пароля на ServerAuthPage
-// начать делать LocalAuth

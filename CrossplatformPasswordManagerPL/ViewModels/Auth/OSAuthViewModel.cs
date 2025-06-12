@@ -1,7 +1,11 @@
-﻿using AvaloniaInside.Shell;
+﻿using Autofac;
+using AvaloniaInside.Shell;
 using CrossplatformPasswordManagerPL.Assets;
 using CrossplatformPasswordManagerPL.Helpers;
+using Ninject.Common;
+using PlatformSpecific.Contracts.PSL.Sequrity;
 using ReactiveUI;
+using Server.Contracts.BLL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,19 +18,58 @@ namespace CrossplatformPasswordManagerPL.ViewModels.Auth
     public class OSAuthViewModel : ViewModelBase
     {
         private readonly INavigator _navigationService;
+        private string _processAuth;
+        private bool _isFailedProcessAuth;
+        public ICommand RepeatAuthCommand { get; set; }
+
+        public string ProcessAuth
+        {
+            get => _processAuth;
+            set
+            {
+                this.RaiseAndSetIfChanged(ref _processAuth, value);
+            }
+        }
+        public bool IsFailedProcessAuth
+        {
+            get => _isFailedProcessAuth;
+            set
+            {
+                this.RaiseAndSetIfChanged(ref _isFailedProcessAuth, value);
+            }
+        }
 
         public OSAuthViewModel(INavigator navigationService)
         {
-            // TODO: если первый вход в аппку - то предлагаем авторизацию системы, если она включена
-            // иначе идем к главной странице менеджера пассов
             _navigationService = navigationService;
-            Auth();
+            IsFailedProcessAuth = false;
+            _ = Auth();
+            RepeatAuthCommand = ReactiveCommand.CreateFromTask(Auth);
         }
 
 
-        private void Auth()
+        private async Task Auth()
         {
-            
+            ProcessAuth = Resources.OSAuthProcessText;
+            using (var scope = ServiceModule.Container?.BeginLifetimeScope())
+            {
+                var osAuthLogic = scope?.Resolve<IOSAuthPlatformSpecific>();
+                if (osAuthLogic != null)
+                {
+                    var statusAuth = await osAuthLogic.RequestAuth();
+                    if (statusAuth)
+                    {
+                        IsFailedProcessAuth = false;
+                        ProcessAuth = "Auth valid!";
+                        //await PageLocator.StepToLocalAuthPage(_navigationService); // TODO к главной странице менеджера пассов
+                    }
+                    else
+                    {
+                        IsFailedProcessAuth = true;
+                        ProcessAuth = Resources.OSAuthErrorText;
+                    }
+                }
+            }
         }
     }
 }

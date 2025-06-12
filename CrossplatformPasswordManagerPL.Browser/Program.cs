@@ -8,8 +8,10 @@ using Avalonia.ReactiveUI;
 using AvaloniaInside.Shell;
 using CrossplatformPasswordManagerPL;
 using CrossplatformPasswordManagerPL.Browser.Files;
+using CrossplatformPasswordManagerPL.Browser.Sequrity;
 using Ninject.Common;
 using PlatformSpecific.Contracts.PSL;
+using PlatformSpecific.Contracts.PSL.Sequrity;
 
 [assembly: SupportedOSPlatform("browser")]
 
@@ -24,7 +26,8 @@ internal sealed partial class Program
     public static AppBuilder BuildAvaloniaApp()
     {
         ServiceModule.InitForPlatform(
-            new KeyValuePair<Type, Type>(typeof(FilesProvider), typeof(IFilesProviderPlatformSpecific))
+            new KeyValuePair<Type, Type>(typeof(FilesProvider), typeof(IFilesProviderPlatformSpecific)),
+            new KeyValuePair<Type, Type>(typeof(OSAuth), typeof(IOSAuthPlatformSpecific))
         );
         return AppBuilder.Configure<App>();
     }

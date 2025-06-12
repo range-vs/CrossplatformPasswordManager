@@ -1,6 +1,8 @@
 using CrossplatformPasswordManagerPL.iOS.Files;
+using CrossplatformPasswordManagerPL.iOS.Sequrity;
 using Ninject.Common;
 using PlatformSpecific.Contracts.PSL;
+using PlatformSpecific.Contracts.PSL.Sequrity;
 using System;
 using System.Collections.Generic;
 using UIKit;
@@ -13,7 +15,8 @@ public class Application
     static void Main(string[] args)
     {
         ServiceModule.InitForPlatform(
-             new KeyValuePair<Type, Type>(typeof(FilesProvider), typeof(IFilesProviderPlatformSpecific))
+             new KeyValuePair<Type, Type>(typeof(FilesProvider), typeof(IFilesProviderPlatformSpecific)),
+            new KeyValuePair<Type, Type>(typeof(OSAuth), typeof(IOSAuthPlatformSpecific))
          );
         UIApplication.Main(args, null, typeof(AppDelegate));
     }

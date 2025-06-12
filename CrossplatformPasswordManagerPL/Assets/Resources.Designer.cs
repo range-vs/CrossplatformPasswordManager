@@ -228,5 +228,39 @@ namespace CrossplatformPasswordManagerPL.Assets {
                 return ResourceManager.GetString("LocalAuthValidationPINErrorMessageText", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Server properties.
+        /// </summary>
+        public static string RepeatAuthButtonText
+        {
+            get
+            {
+                return ResourceManager.GetString("RepeatAuthButtonText", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Server properties.
+        /// </summary>
+        public static string OSAuthProcessText
+        {
+            get
+            {
+                return ResourceManager.GetString("OSAuthProcessText", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Server properties.
+        /// </summary>
+        public static string OSAuthErrorText
+        {
+            get
+            {
+                return ResourceManager.GetString("OSAuthErrorText", resourceCulture);
+            }
+        }
+
     }
 }

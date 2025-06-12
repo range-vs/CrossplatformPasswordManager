@@ -89,6 +89,7 @@ namespace CrossplatformPasswordManagerPL.ViewModels.Auth
         {
             // TODO: если первый вход в аппку - то показываем страницу с регистрацией пин
             // иначе страницу со входом по пин
+            // скрыть пасс звездочками, как у ServerAuth
             _navigationService = navigationService;
             IsFirstStart = true;
             AuthCommand = ReactiveCommand.Create(Auth);
