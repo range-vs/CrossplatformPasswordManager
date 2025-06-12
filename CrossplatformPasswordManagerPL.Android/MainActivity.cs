@@ -23,7 +23,7 @@ namespace CrossplatformPasswordManagerPL.Android;
     ConfigurationChanges = ConfigChanges.Orientation | ConfigChanges.ScreenSize | ConfigChanges.UiMode)]
 public class MainActivity : AvaloniaMainActivity<App>
 {
-    public static MainActivity activity = null;
+    public static MainActivity activity = null; // TODO: придумать, как обойти этот костыль
     protected override AppBuilder CustomizeAppBuilder(AppBuilder builder)
     {
         activity = this;

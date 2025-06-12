@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Helpers.Common;
 
 namespace CrossplatformPasswordManagerPL.Android.Sequrity
 {
@@ -19,9 +20,9 @@ namespace CrossplatformPasswordManagerPL.Android.Sequrity
 
         public async Task<bool> RequestAuth()
         {
-            // TODO: добавить альтер запрос(код, ключ) если нет биометрии
+            // TODO: добавить альтер запрос(код, граф. ключ, камера?) если нет биометрии
             CrossFingerprint.SetCurrentActivityResolver(() => MainActivity.activity);
-            var request = new AuthenticationRequestConfiguration("Prove you have fingers!", "Because without it you can't have access");
+            var request = new AuthenticationRequestConfiguration(StringKeys.AccessConfirmationText, StringKeys.AccessConfirmationDescriptionText);
             var result = await CrossFingerprint.Current.AuthenticateAsync(request);
             return result.Authenticated;
         }

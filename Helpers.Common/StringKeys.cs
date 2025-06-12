@@ -16,6 +16,10 @@ namespace Helpers.Common
         public static string HttpTagLocalAuthPage => "http";
         public static string HttpsLocalAuthPage => "https";
 
+        public static string AccessConfirmationText => "Access confirmation";
+        public static string AccessConfirmationDescriptionText => "Please enter your device credentials to continue";
+
+
 
     }
 }

@@ -1,4 +1,5 @@
-﻿using PlatformSpecific.Contracts.PSL.Sequrity;
+﻿using Helpers.Common;
+using PlatformSpecific.Contracts.PSL.Sequrity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -92,8 +93,8 @@ namespace CrossplatformPasswordManagerPL.Desktop.Sequrity
             var credUI = new CREDUI_INFO
             {
                 cbSize = Marshal.SizeOf(typeof(CREDUI_INFO)),
-                pszCaptionText = "Подтверждение доступа",
-                pszMessageText = "Введите учётные данные Windows для продолжения",
+                pszCaptionText = StringKeys.AccessConfirmationText,
+                pszMessageText = StringKeys.AccessConfirmationDescriptionText,
                 hwndParent = IntPtr.Zero,
                 hbmBanner = IntPtr.Zero
             };
