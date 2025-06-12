@@ -36,4 +36,10 @@ public class MainActivity : AvaloniaMainActivity<App>
             .UseShell()
             .UseReactiveUI();
     }
+
+    public override void OnBackPressed()
+    {
+        // TODO: в будущем предлагать закрыть аппу
+        return;
+    }
 }

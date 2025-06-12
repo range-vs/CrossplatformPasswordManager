@@ -143,20 +143,16 @@ namespace CrossplatformPasswordManagerPL.Desktop.Sequrity
                     userName = userBuf.ToString();
                     password = passBuf.ToString();
 
-                    // Здесь можно добавить дополнительную проверку, если нужна
-
-                    return true; // Ввод прошёл успешно
+                    return true; 
                 }
 
-                return false; // Не удалось распаковать данные
+                return false; 
             }
             else if (result == CredUIReturnCodes.CANCELLED)
             {
-                // Пользователь отменил ввод — считаем аутентификацию неуспешной
                 return false;
             }
 
-            // Если ошибка, например служба недоступна — пропускаем этап
             return true;
         }
 
