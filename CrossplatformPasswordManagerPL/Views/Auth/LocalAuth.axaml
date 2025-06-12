@@ -2,13 +2,34 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      		 xmlns:assets="clr-namespace:CrossplatformPasswordManagerPL.Assets"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="CrossplatformPasswordManagerPL.Views.Auth.LocalAuth"
-             NavigationBar.Visible="False">
+             NavigationBar.Visible="False"
+	  	     xmlns:vm="clr-namespace:CrossplatformPasswordManagerPL.ViewModels.Auth"
+			 x:DataType="vm:LocalAuthViewModel">
 	<Grid>
-		<StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Spacing="14">
-			<TextBlock Text="Local Auth Page" FontSize="18" HorizontalAlignment="Center"></TextBlock>
-			<Button Content="Auth!" HorizontalAlignment="Center" Margin="30"></Button>
+		<Grid.RowDefinitions>
+			<RowDefinition></RowDefinition>
+		</Grid.RowDefinitions>
+		<StackPanel IsVisible="{Binding !IsFirstStart}" VerticalAlignment="Center" HorizontalAlignment="Center" Spacing="14" Grid.Row="0">
+			<TextBlock Text="{x:Static assets:Resources.LocalAuthText}" FontSize="18" HorizontalAlignment="Center"></TextBlock>
+			<TextBlock Text="{x:Static assets:Resources.LocalAuthPinText}" FontSize="16" HorizontalAlignment="Center"></TextBlock>
+			<TextBlock Text="{x:Static assets:Resources.ServerAuthValidationErrorMessageText}" FontSize="10" HorizontalAlignment="Center" Foreground="Red" IsVisible="{Binding IsErrorMessagePin}"></TextBlock>
+			<TextBox Text="{Binding PIN}" FontSize="16" HorizontalAlignment="Center" Watermark="{x:Static assets:Resources.LocalAuthPinPlaceholderText}"></TextBox>
+			<TextBlock Text="{Binding ErrorPIN}" FontSize="14" HorizontalAlignment="Center" Foreground="Red" IsVisible="{Binding IsErrorMessageCheckerPin}"></TextBlock>
+			<Button Command="{Binding AuthCommand}" Content="{x:Static assets:Resources.AuthButtonText}" HorizontalAlignment="Center" Margin="30" ></Button>
+		</StackPanel>
+		<StackPanel IsVisible="{Binding IsFirstStart}" VerticalAlignment="Center" HorizontalAlignment="Center" Spacing="14" Grid.Row="0">
+			<TextBlock Text="{x:Static assets:Resources.LocalAuthPropertiesText}" FontSize="18" HorizontalAlignment="Center"></TextBlock>
+			<TextBlock Text="{x:Static assets:Resources.LocalAuthPinText}" FontSize="16" HorizontalAlignment="Center"></TextBlock>
+			<TextBlock Text="{x:Static assets:Resources.ServerAuthValidationErrorMessageText}" FontSize="10" HorizontalAlignment="Center" Foreground="Red" IsVisible="{Binding IsErrorMessagePin}"></TextBlock>
+			<TextBox Text="{Binding PIN}" FontSize="16" HorizontalAlignment="Center" Watermark="{x:Static assets:Resources.LocalAuthPinPlaceholderText}"></TextBox>
+			<TextBlock Text="{x:Static assets:Resources.LocalAuthPinRepeatText}" FontSize="16" HorizontalAlignment="Center"></TextBlock>
+			<TextBlock Text="{x:Static assets:Resources.ServerAuthValidationErrorMessageText}" FontSize="10" HorizontalAlignment="Center" Foreground="Red" IsVisible="{Binding IsErrorMessageRepeatPin}"></TextBlock>
+			<TextBox Text="{Binding RepeatPIN}" FontSize="16" HorizontalAlignment="Center" Watermark="{x:Static assets:Resources.LocalAuthPinPlaceholderText}"></TextBox>
+			<TextBlock Text="{Binding ErrorPIN}" FontSize="14" HorizontalAlignment="Center" Foreground="Red" IsVisible="{Binding IsErrorMessageCheckerPin}"></TextBlock>
+			<Button Command="{Binding RegisterPinCommand}" Content="{x:Static assets:Resources.AuthButtonText}" HorizontalAlignment="Center" Margin="30" ></Button>
 		</StackPanel>
 	</Grid>
 </Page>

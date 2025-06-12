@@ -138,6 +138,27 @@
   <data name="AuthUrlTitleText" xml:space="preserve">
     <value>Write URL your server:</value>
   </data>
+  <data name="LocalAuthPinPlaceholderText" xml:space="preserve">
+    <value>Enter your PIN...</value>
+  </data>
+  <data name="LocalAuthPinRepeatText" xml:space="preserve">
+    <value>Repeat write your PIN...</value>
+  </data>
+  <data name="LocalAuthPinText" xml:space="preserve">
+    <value>Write your PIN...</value>
+  </data>
+  <data name="LocalAuthPropertiesText" xml:space="preserve">
+    <value>Loacal auth properties</value>
+  </data>
+  <data name="LocalAuthText" xml:space="preserve">
+    <value>Local auth</value>
+  </data>
+  <data name="LocalAuthValidationPINErrorMessageText" xml:space="preserve">
+    <value>PIN is not correct!</value>
+  </data>
+  <data name="LocalAuthValidationPINsErrorMessageText" xml:space="preserve">
+    <value>PIN is not equals!</value>
+  </data>
   <data name="ServerAuthErrorMessageText" xml:space="preserve">
     <value>URL, login or password is not correct</value>
   </data>

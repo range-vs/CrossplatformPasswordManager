@@ -138,6 +138,12 @@
   <data name="AuthUrlTitleText" xml:space="preserve">
     <value>Введите URL вашего сервера:</value>
   </data>
+  <data name="LocalAuthPropertiesText" xml:space="preserve">
+    <value>Настройки локальной авторизации</value>
+  </data>
+  <data name="LocalAuthText" xml:space="preserve">
+    <value>Локальная авторизация</value>
+  </data>
   <data name="ServerAuthErrorMessageText" xml:space="preserve">
     <value>Неверные URL, логин или пароль</value>
   </data>

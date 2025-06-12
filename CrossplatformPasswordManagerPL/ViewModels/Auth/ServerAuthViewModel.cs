@@ -54,7 +54,7 @@ public class ServerAuthViewModel : ViewModelBase
         set
         {
             this.RaiseAndSetIfChanged(ref _url, value);
-            IsErrorMessageURL = ValidateText(_url);
+            IsErrorMessageURL = Validator.ValidateText(_url);
         }
     }
     public bool IsErrorMessageLogin
@@ -68,7 +68,7 @@ public class ServerAuthViewModel : ViewModelBase
         set
         {
             this.RaiseAndSetIfChanged(ref _login, value);
-            IsErrorMessageLogin = ValidateText(_login);
+            IsErrorMessageLogin = Validator.ValidateText(_login);
         }
     }
     public bool IsErrorMessagePassword
@@ -82,7 +82,7 @@ public class ServerAuthViewModel : ViewModelBase
         set
         {
             this.RaiseAndSetIfChanged(ref _password, value);
-            IsErrorMessagePassword = ValidateText(_password);
+            IsErrorMessagePassword = Validator.ValidateText(_password);
         }
     }
     public bool IsProcessAuth
@@ -110,9 +110,9 @@ public class ServerAuthViewModel : ViewModelBase
     {
         IsAuthError = false;
         IsProcessAuth = true;
-        IsErrorMessageURL = ValidateText(URL);
-        IsErrorMessageLogin = ValidateText(Login);
-        IsErrorMessagePassword = ValidateText(Password);
+        IsErrorMessageURL = Validator.ValidateText(URL);
+        IsErrorMessageLogin = Validator.ValidateText(Login);
+        IsErrorMessagePassword = Validator.ValidateText(Password);
         if (IsErrorMessageURL || IsErrorMessageLogin || IsErrorMessagePassword)
         {
             IsProcessAuth = false;
@@ -135,14 +135,6 @@ public class ServerAuthViewModel : ViewModelBase
         IsProcessAuth = false; 
     }
 
-    public bool ValidateText(string Text)
-    {
-        if (string.IsNullOrEmpty(Text))
-        {
-            return true;
-        }
-        return false;
-    }
 }
 
 // TODO заполнить методы

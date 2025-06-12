@@ -151,5 +151,82 @@ namespace CrossplatformPasswordManagerPL.Assets {
                 return ResourceManager.GetString("ServerAuthTitleText", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Value is can not empty.
+        /// </summary>
+        public static string LocalAuthPropertiesText
+        {
+            get
+            {
+                return ResourceManager.GetString("LocalAuthPropertiesText", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Server properties.
+        /// </summary>
+        public static string LocalAuthText
+        {
+            get
+            {
+                return ResourceManager.GetString("LocalAuthText", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Server properties.
+        /// </summary>
+        public static string LocalAuthPinText
+        {
+            get
+            {
+                return ResourceManager.GetString("LocalAuthPinText", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Server properties.
+        /// </summary>
+        public static string LocalAuthPinPlaceholderText
+        {
+            get
+            {
+                return ResourceManager.GetString("LocalAuthPinPlaceholderText", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Server properties.
+        /// </summary>
+        public static string LocalAuthPinRepeatText
+        {
+            get
+            {
+                return ResourceManager.GetString("LocalAuthPinRepeatText", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Server properties.
+        /// </summary>
+        public static string LocalAuthValidationPINsErrorMessageText
+        {
+            get
+            {
+                return ResourceManager.GetString("LocalAuthValidationPINsErrorMessageText", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Server properties.
+        /// </summary>
+        public static string LocalAuthValidationPINErrorMessageText
+        {
+            get
+            {
+                return ResourceManager.GetString("LocalAuthValidationPINErrorMessageText", resourceCulture);
+            }
+        }
     }
 }

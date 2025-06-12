@@ -25,7 +25,7 @@ namespace Server.Core.BLL
         public async Task<bool> CheckServerAuth(string url, string login, string password)
         {
             // TODO: переделать на обращение к серверу
-            await Task.Delay(4000);
+            await Task.Delay(2000);
             string token = "this_token";
             var status = false;
             if (_authSequrityLogic != null)
