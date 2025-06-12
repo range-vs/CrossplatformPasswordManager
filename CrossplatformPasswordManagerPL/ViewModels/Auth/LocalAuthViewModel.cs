@@ -92,7 +92,7 @@ namespace CrossplatformPasswordManagerPL.ViewModels.Auth
             _navigationService = navigationService;
             IsFirstStart = true;
             AuthCommand = ReactiveCommand.Create(Auth);
-            RegisterPinCommand = ReactiveCommand.Create(RegisterPin);
+            RegisterPinCommand = ReactiveCommand.CreateFromTask(RegisterPin);
         }
 
         private void Auth()
@@ -107,7 +107,7 @@ namespace CrossplatformPasswordManagerPL.ViewModels.Auth
             // TODO: пройти на следующий экран авторизации
         }
 
-        private void RegisterPin()
+        private async Task RegisterPin()
         {
             ErrorPIN = Resources.LocalAuthValidationPINsErrorMessageText;
             IsErrorMessagePin = Validator.ValidateText(PIN);
@@ -117,8 +117,8 @@ namespace CrossplatformPasswordManagerPL.ViewModels.Auth
             {
                 return;
             }
-
             // TODO: региструем пин(пишем в файл  шифрованием) и проходим на след экран
+            await PageLocator.StepToOSAuthPage(_navigationService);
         }
     }
 }

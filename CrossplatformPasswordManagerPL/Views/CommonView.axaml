@@ -33,6 +33,7 @@
 
 		<Route Path="server_auth" Page="viewsAuth:ServerAuth"></Route>
 		<Route Path="local_auth" Page="viewsAuth:LocalAuth"></Route>
+		<Route Path="os_auth" Page="viewsAuth:OSAuth"></Route>
 
 	</ShellView>
 
