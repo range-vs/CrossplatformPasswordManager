@@ -6,6 +6,7 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="CrossplatformPasswordManagerPL.Views.CommonView"
 			 xmlns:viewsAuth="clr-namespace:CrossplatformPasswordManagerPL.Views.Auth"
+			 xmlns:viewsMain="clr-namespace:CrossplatformPasswordManagerPL.Views.Main"
 			 x:DataType="vm:CommonViewModel"
 			 >
 	<Design.DataContext>
@@ -34,6 +35,7 @@
 		<Route Path="server_auth" Page="viewsAuth:ServerAuth"></Route>
 		<Route Path="local_auth" Page="viewsAuth:LocalAuth"></Route>
 		<Route Path="os_auth" Page="viewsAuth:OSAuth"></Route>
+		<Route Path="groups_record" Page="viewsMain:ListRecords"></Route>
 
 	</ShellView>
 

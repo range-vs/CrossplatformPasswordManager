@@ -1,0 +1,30 @@
+<Page xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	         xmlns:assets="clr-namespace:CrossplatformPasswordManagerPL.Assets"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+	         x:Class="CrossplatformPasswordManagerPL.Views.Main.ListRecords"
+             NavigationBar.Visible="False"
+			 xmlns:vm="clr-namespace:CrossplatformPasswordManagerPL.ViewModels.Main"
+			 x:DataType="vm:ListRecordsViewModel">
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="0.1*"/>
+		</Grid.RowDefinitions>
+		<ListBox Grid.Row="0" Margin="5" ItemsSource="{Binding Records}">
+			
+		</ListBox>
+		<Grid Grid.Row="1">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+			</Grid.ColumnDefinitions>
+			<Button Grid.Column="0" HorizontalAlignment="Center" Content="Add"/>
+			<Button Grid.Column="1" HorizontalAlignment="Center" Content="Rename"/>
+			<Button Grid.Column="2" HorizontalAlignment="Center" Content="Delete"/>
+		</Grid>
+	</Grid>
+</Page>

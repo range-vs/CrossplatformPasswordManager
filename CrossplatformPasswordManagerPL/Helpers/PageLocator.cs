@@ -23,5 +23,10 @@ namespace CrossplatformPasswordManagerPL.Helpers
         {
             await navigationService.NavigateAsync(StringKeys.OSAuthPage);
         }
+
+        public static async Task StepToListGroupsRecordsPage(INavigator navigationService)
+        {
+            await navigationService.NavigateAsync(StringKeys.GroupsRecordsPage);
+        }
     }
 }

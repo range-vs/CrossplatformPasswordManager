@@ -61,7 +61,7 @@ namespace CrossplatformPasswordManagerPL.ViewModels.Auth
                     {
                         IsFailedProcessAuth = false;
                         ProcessAuth = "Auth valid!";
-                        //await PageLocator.StepToLocalAuthPage(_navigationService); // TODO к главной странице менеджера пассов
+                        await PageLocator.StepToListGroupsRecordsPage(_navigationService);
                     }
                     else
                     {

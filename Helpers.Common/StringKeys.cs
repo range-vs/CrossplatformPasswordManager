@@ -9,9 +9,9 @@ namespace Helpers.Common
     public class StringKeys
     {
         public static string ServerAuthPage => "/server_auth";
-
         public static string LocalAuthPage => "/local_auth";
         public static string OSAuthPage => "/os_auth";
+        public static string GroupsRecordsPage => "/groups_record";
 
         public static string HttpTagLocalAuthPage => "http";
         public static string HttpsLocalAuthPage => "https";
