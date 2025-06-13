@@ -8,4 +8,13 @@
     
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="14.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Entities.Common\Entities.Common.csproj" />
+    <ProjectReference Include="..\Models.Common\Models.Common.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -13,6 +13,7 @@ using LocalStorage.Core.DAL;
 using LocalStorage.Contratcs.DAL;
 using PlatformSpecific.Contracts.PSL;
 using System.Collections;
+using Helpers.Common.Mapper;
 
 namespace Ninject.Common
 {
@@ -69,6 +70,9 @@ namespace Ninject.Common
                 _builder.RegisterType<GroupLogic>().As<IGroupLogic>();
                 _builder.RegisterType<AuthLogic>().As<IAuthLogic>();
                 _builder.RegisterType<AuthSequrityLogic>().As<IAuthSequrityLogic>();
+
+                // Mapper
+                _builder.RegisterInstance(new CPMapper()).As<ICPMapper>();
 
                 //// Platform Specific
                 //if (OperatingSystem.IsWindows())

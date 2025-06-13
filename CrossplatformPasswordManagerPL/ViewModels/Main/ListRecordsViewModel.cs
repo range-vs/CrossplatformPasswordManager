@@ -3,7 +3,11 @@ using Avalonia.Controls;
 using AvaloniaInside.Shell;
 using CrossplatformPasswordManagerPL.Assets;
 using CrossplatformPasswordManagerPL.Helpers;
+using Database.Contracts.BLL;
 using DialogHostAvalonia;
+using DynamicData.Binding;
+using Helpers.Common.Mapper;
+using Models.Common;
 using Ninject.Common;
 using PlatformSpecific.Contracts.PSL.Sequrity;
 using ReactiveUI;
@@ -25,8 +29,9 @@ namespace CrossplatformPasswordManagerPL.ViewModels.Main
         private readonly INavigator _navigationService;
         private readonly IResourceDictionary _resources;
 
-        private ObservableCollection<string> _records;
-        private string _currentRecord;
+        private ObservableCollection<GroupModel> _records;
+        private GroupModel _currentRecord;
+        private bool _isLoadData;
 
         public ICommand RenameCommand { get; set; }
         public ICommand RemoveCommand { get; set; }
@@ -35,33 +40,53 @@ namespace CrossplatformPasswordManagerPL.ViewModels.Main
         public ICommand RemoveApplyCommand { get; set; }
         public ICommand RemoveAndRenameCancelCommand { get; set; }
 
-        public ObservableCollection<string> Records
+        public ObservableCollection<GroupModel> Records
         {
             get => _records;
             set => this.RaiseAndSetIfChanged(ref _records, value);
         }
-        public string CurrentRecord
+        public GroupModel CurrentRecord
         {
             get => _currentRecord;
             set => this.RaiseAndSetIfChanged(ref _currentRecord, value);
+        }
+        public bool IsLoadData
+        {
+            get => _isLoadData;
+            set => this.RaiseAndSetIfChanged(ref _isLoadData, value);
         }
 
         public ListRecordsViewModel(INavigator navigationService, IResourceDictionary resources)
         {
             _navigationService = navigationService;
             _resources = resources;
+            IsLoadData = true;
             RenameCommand = ReactiveCommand.CreateFromTask(Rename);
             RemoveCommand = ReactiveCommand.CreateFromTask(Remove);
             RenameApplyCommand = ReactiveCommand.CreateFromTask(RenameApply);
             RemoveApplyCommand = ReactiveCommand.CreateFromTask(RemoveApply);
             RemoveAndRenameCancelCommand = ReactiveCommand.Create(RemoveAndRenameCancel);
-            // сделать набор сущностей и загрузить их с сервера (пока имитация)
-            // TODO: загрузить данные через DШ(синглтон, запомнить данные в DI)
-            // настроить кастомную ui
-            // настроить биндинг строчки из list view
-            Records = new ObservableCollection<string>() { "Ivan", "run club", "mother"};
+            _ = Init();
         }
 
+        private async Task Init()
+        {
+            // TODO: продумать запись данных в БД и на сервер!
+            using (var scope = ServiceModule.Container?.BeginLifetimeScope())
+            {
+                var mapper = scope?.Resolve<ICPMapper>();
+                if (mapper != null)
+                {
+                    var groupsLogic = scope?.Resolve<IGroupLogic>();
+                    if (groupsLogic != null)
+                    {
+                        var rec = await groupsLogic.GetAll();
+                        Records = mapper.GetMapper().Map<ObservableCollection<GroupModel>>(rec);
+                    }
+                }
+            }
+            IsLoadData = false;
+        }
 
         private async Task Remove()
         {

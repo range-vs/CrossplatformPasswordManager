@@ -2,6 +2,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 xmlns:progRing="clr-namespace:AvaloniaProgressRing;assembly=AvaloniaProgressRing"
 	         xmlns:assets="clr-namespace:CrossplatformPasswordManagerPL.Assets"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
 	         x:Class="CrossplatformPasswordManagerPL.Views.Main.ListRecords"
@@ -12,7 +13,7 @@
 	<Page.Resources>
 		<StackPanel x:Key="{x:Static assets:Resources.RemoveRecordDialogId}">
 			<TextBlock Text="{x:Static assets:Resources.RemoveQuestionText}"/>
-			<TextBlock Text="{Binding CurrentRecord}"/>
+			<TextBlock Text="{Binding CurrentRecord.Name}"/>
 			<Grid>
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition/>
@@ -24,7 +25,7 @@
 		</StackPanel>
 		<StackPanel x:Key="{x:Static assets:Resources.RenameRecordDialogId}">
 			<TextBlock Text="{x:Static assets:Resources.RenameQuestionText}"/>
-			<TextBox Text="{Binding CurrentRecord}"/>
+			<TextBox Text="{Binding CurrentRecord.Name}"/>
 			<Grid>
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition/>
@@ -43,7 +44,11 @@
 				<RowDefinition Height="0.1*"/>
 			</Grid.RowDefinitions>
 			<ListBox Grid.Row="0" Margin="5" ItemsSource="{Binding Records}" SelectedItem="{Binding CurrentRecord}">
-
+				<ListBox.ItemTemplate>
+					<DataTemplate>
+						<TextBlock Text="{Binding Name}"/>
+					</DataTemplate>
+				</ListBox.ItemTemplate>
 			</ListBox>
 			<Grid Grid.Row="1">
 				<Grid.ColumnDefinitions>
@@ -55,6 +60,15 @@
 				<Button Grid.Column="1" HorizontalAlignment="Center" Content="{x:Static assets:Resources.RenameButtonText}" Command="{Binding RenameCommand}"/>
 				<Button Grid.Column="2" HorizontalAlignment="Center" Content="{x:Static assets:Resources.RemoveButtonText}" Command="{Binding RemoveCommand}"/>
 			</Grid>
+			<DockPanel Grid.RowSpan="2" IsVisible="{Binding IsLoadData}" Background="rgba(0, 0, 0, 0.8)">
+				<progRing:ProgressRing Width="80"
+							   Height="80"
+							   IsActive="True"
+							   HorizontalAlignment="Center"
+							   VerticalAlignment="Center"
+							   Foreground="Green"
+							   Margin="10,20,0,0"/>
+			</DockPanel>
 		</Grid>
 	</dialogHost:DialogHost>
 </Page>
