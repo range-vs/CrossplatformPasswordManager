@@ -15,7 +15,7 @@ namespace Database.Core.DAL
         public async Task<IEnumerable<GroupEntity>> GetAll()
         {
             // TODO: запрашиваем все сущности с сервака, и передаем их в BLL
-            await Task.Delay(3000);
+            await Task.Delay(1000);
             List<GroupEntity> collection = new List<GroupEntity>()
             {
                 new()

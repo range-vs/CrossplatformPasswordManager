@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Database.Contracts.BLL\Database.Contracts.BLL.csproj" />
     <ProjectReference Include="..\Entities.Common\Entities.Common.csproj" />
     <ProjectReference Include="..\Models.Common\Models.Common.csproj" />
     <ProjectReference Include="..\PlatformSpecific.Contracts.PSL\PlatformSpecific.Contracts.PSL.csproj" />

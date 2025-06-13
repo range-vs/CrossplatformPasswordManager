@@ -1,4 +1,5 @@
-﻿using PlatformSpecific.Contracts.PSL.Internet;
+﻿using Database.Contracts.BLL;
+using PlatformSpecific.Contracts.PSL.Internet;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -15,10 +16,14 @@ namespace Helpers.Common.Internet
         private readonly static int PingCountSec = 5000;
 
         private readonly IInternetAdapterChecker _internetAdapterCheckerPlatformSpecific;
+        private readonly IGroupDbLogic _groupDbLogic;
+        private readonly IGroupServerLogic _groupServerLogic;
 
-        public ServerSaver(IInternetAdapterChecker internetAdapterCheckerPlatformSpecific)
+        public ServerSaver(IInternetAdapterChecker internetAdapterCheckerPlatformSpecific, IGroupDbLogic groupDbLogic, IGroupServerLogic groupServerLogic)
         {
             _internetAdapterCheckerPlatformSpecific = internetAdapterCheckerPlatformSpecific;
+            _groupDbLogic = groupDbLogic;
+            _groupServerLogic = groupServerLogic;
         }
 
         public void Run()
@@ -58,8 +63,11 @@ namespace Helpers.Common.Internet
                             continue;
                         }
                     }
-                    // TODO get data from disk!
-                    // TODO save data to sarver!
+                    var actualData = await _groupDbLogic.GetAll();
+                    if (actualData != null)
+                    {
+                        await _groupServerLogic.Write(actualData);
+                    }
                 }
                 catch (TaskCanceledException)
                 {

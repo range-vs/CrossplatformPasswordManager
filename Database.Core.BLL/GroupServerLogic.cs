@@ -18,16 +18,22 @@ namespace Database.Core.BLL
             _groupServerDao = groupServerDao;
         }
 
-        public Task<IEnumerable<GroupModel>> GetAll()
+        public async Task<IEnumerable<GroupModel>> GetAll()
         {
             // TODO: запрашиваем у DAL все сущности с сервера, кастим с помощью автомаппера в модели и возвращаем PL
-            throw new NotImplementedException();
+            var result = await _groupServerDao.GetAll();
+            List<GroupModel> collection = new List<GroupModel>();
+            foreach (var entity in result)
+            {
+                collection.Add(new GroupModel { Id = entity.Id, Name = entity.Name });
+            }
+            return collection;
         }
 
-        public Task Write(IEnumerable<GroupModel> data)
+        public async Task Write(IEnumerable<GroupModel> data)
         {
             // TODO: кастим модели в сущности с помощью автомаппера по флагу НЕ_ЗАПИСАНО и отправляем в DAL на сервер
-            throw new NotImplementedException();
+            await Task.Delay(1000);
         }
     }
 }
