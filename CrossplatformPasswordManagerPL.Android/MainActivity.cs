@@ -26,18 +26,16 @@ namespace CrossplatformPasswordManagerPL.Android
         ConfigurationChanges = ConfigChanges.Orientation | ConfigChanges.ScreenSize | ConfigChanges.UiMode)]
     public class MainActivity : AvaloniaMainActivity<App>
     {
-        public MainActivityProvider MainActivityProvider { get; set; }
-
         protected override AppBuilder CustomizeAppBuilder(AppBuilder builder)
         {
-            MainActivityProvider = new MainActivityProvider(this);
             ServiceModule.InitForPlatform(
                 new KeyValuePair<Type, Type>(typeof(FilesProvider), typeof(IFilesProviderPlatformSpecific)),
                 new KeyValuePair<Type, Type>(typeof(OSAuth), typeof(IOSAuthPlatformSpecific)),
                 new KeyValuePair<Type, Type>(typeof(InternetAdapterChecker), typeof(IInternetAdapterChecker))
             );
             ServiceModule.InitForPlatform(
-                new KeyValuePair<object, Type>(MainActivityProvider, typeof(IMainActivityProvider))
+                new KeyValuePair<object, Type>(new InternetAdapterChecker(ApplicationContext), typeof(IInternetAdapterChecker)),
+                new KeyValuePair<object, Type>(new MainActivityProvider(this), typeof(IMainActivityProvider))
             );
             return base.CustomizeAppBuilder(builder)
                 .WithInterFont()
