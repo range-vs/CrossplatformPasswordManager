@@ -1,4 +1,5 @@
-﻿using Database.Contracts.BLL;
+﻿using CrossplatformPasswordManagerPL.Helpers;
+using Database.Contracts.BLL;
 using PlatformSpecific.Contracts.PSL.Internet;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,8 @@ namespace Helpers.Common.Internet
         private readonly IGroupDbLogic _groupDbLogic;
         private readonly IGroupServerLogic _groupServerLogic;
 
+        private CancellationTokenSource _cts;
+
         public ServerSaver(IInternetAdapterChecker internetAdapterCheckerPlatformSpecific, IGroupDbLogic groupDbLogic, IGroupServerLogic groupServerLogic)
         {
             _internetAdapterCheckerPlatformSpecific = internetAdapterCheckerPlatformSpecific;
@@ -28,14 +31,14 @@ namespace Helpers.Common.Internet
 
         public void Run()
         {
-            using CancellationTokenSource cts = new CancellationTokenSource();
+            _cts = new CancellationTokenSource();
 
-            var periodicTask = TrySaveDataToServer(TimeSpan.FromSeconds(20), cts.Token);
+            var periodicTask = TrySaveDataToServer(TimeSpan.FromSeconds(20), _cts.Token);
         }
 
         public void Dispose()
         {
-            
+            _cts.Cancel();
         }
 
         private async Task TrySaveDataToServer(TimeSpan interval, CancellationToken cancellationToken)
@@ -51,14 +54,14 @@ namespace Helpers.Common.Internet
                     {
                         if (!_internetAdapterCheckerPlatformSpecific.IsInternetAdapterAvailable())
                         {
-                            // show custom popup!
+                            //await PageLocator.ShowToast("Подключение к интернету потеряно");
                             await waitTask.Invoke();
                             continue;
                         }
                         PingReply reply = await ping.SendPingAsync("8.8.8.8", PingCountSec);
                         if(reply.Status != IPStatus.Success)
                         {
-                            // show custom popup!
+                            //await PageLocator.ShowToast("Подключение к серверу потеряно");
                             await waitTask.Invoke();
                             continue;
                         }

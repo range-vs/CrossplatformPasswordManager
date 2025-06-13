@@ -34,6 +34,8 @@ namespace CrossplatformPasswordManagerPL.ViewModels.Main
         private GroupModel _currentRecord;
         private bool _isLoadData;
 
+        public ICommand AddCommand { get; set; }
+
         public ICommand RenameCommand { get; set; }
         public ICommand RemoveCommand { get; set; }
 
@@ -62,6 +64,7 @@ namespace CrossplatformPasswordManagerPL.ViewModels.Main
             _navigationService = navigationService;
             _resources = resources;
             IsLoadData = true;
+            AddCommand = ReactiveCommand.Create(Add);
             RenameCommand = ReactiveCommand.CreateFromTask(Rename);
             RemoveCommand = ReactiveCommand.CreateFromTask(Remove);
             RenameApplyCommand = ReactiveCommand.CreateFromTask(RenameApply);
@@ -94,6 +97,11 @@ namespace CrossplatformPasswordManagerPL.ViewModels.Main
                 }
             }
             IsLoadData = false;
+        }
+
+        private async Task Add()
+        {
+            
         }
 
         private async Task Remove()

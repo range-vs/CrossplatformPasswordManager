@@ -56,7 +56,7 @@
 					<ColumnDefinition Width="*"/>
 					<ColumnDefinition Width="*"/>
 				</Grid.ColumnDefinitions>
-				<Button Grid.Column="0" HorizontalAlignment="Center" Content="{x:Static assets:Resources.AddButtonText}"/>
+				<Button Grid.Column="0" HorizontalAlignment="Center" Content="{x:Static assets:Resources.AddButtonText}" Command="{Binding AddCommand}"/>
 				<Button Grid.Column="1" HorizontalAlignment="Center" Content="{x:Static assets:Resources.RenameButtonText}" Command="{Binding RenameCommand}"/>
 				<Button Grid.Column="2" HorizontalAlignment="Center" Content="{x:Static assets:Resources.RemoveButtonText}" Command="{Binding RemoveCommand}"/>
 			</Grid>

@@ -14,7 +14,6 @@ using LocalStorage.Contratcs.DAL;
 using PlatformSpecific.Contracts.PSL;
 using System.Collections;
 using Helpers.Common.Mapper;
-using Helpers.Common.Internet;
 
 namespace Ninject.Common
 {
@@ -76,9 +75,6 @@ namespace Ninject.Common
 
                 // Mapper
                 _builder.RegisterInstance(new CPMapper()).As<ICPMapper>();
-
-                // Internet task
-                _builder.RegisterType<ServerSaver>().As<IServerSaver>();
 
                 // ctor DI
                 Container = _builder.Build();

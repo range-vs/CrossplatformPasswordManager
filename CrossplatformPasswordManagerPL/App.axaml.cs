@@ -8,6 +8,10 @@ using System.Globalization;
 
 using Ninject.Common;
 using System.Threading;
+using PlatformSpecific.Contracts.PSL.Files;
+using System.Collections.Generic;
+using System;
+using Helpers.Common.Internet;
 
 namespace CrossplatformPasswordManagerPL;
 
@@ -16,6 +20,9 @@ public partial class App : Application
     public override void Initialize()
     {
         AvaloniaXamlLoader.Load(this);
+        ServiceModule.InitForPlatform(
+                        new KeyValuePair<Type, Type>(typeof(ServerSaver), typeof(IServerSaver))
+            );
         ServiceModule.Init();
     }
 
