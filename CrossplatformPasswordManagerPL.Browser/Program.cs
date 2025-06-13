@@ -8,9 +8,11 @@ using Avalonia.ReactiveUI;
 using AvaloniaInside.Shell;
 using CrossplatformPasswordManagerPL;
 using CrossplatformPasswordManagerPL.Browser.Files;
+using CrossplatformPasswordManagerPL.Browser.Internet;
 using CrossplatformPasswordManagerPL.Browser.Sequrity;
 using Ninject.Common;
-using PlatformSpecific.Contracts.PSL;
+using PlatformSpecific.Contracts.PSL.Files;
+using PlatformSpecific.Contracts.PSL.Internet;
 using PlatformSpecific.Contracts.PSL.Sequrity;
 
 [assembly: SupportedOSPlatform("browser")]
@@ -27,7 +29,8 @@ internal sealed partial class Program
     {
         ServiceModule.InitForPlatform(
             new KeyValuePair<Type, Type>(typeof(FilesProvider), typeof(IFilesProviderPlatformSpecific)),
-            new KeyValuePair<Type, Type>(typeof(OSAuth), typeof(IOSAuthPlatformSpecific))
+            new KeyValuePair<Type, Type>(typeof(OSAuth), typeof(IOSAuthPlatformSpecific)),
+            new KeyValuePair<Type, Type>(typeof(InternetAdapterChecker), typeof(IInternetAdapterChecker))
         );
         return AppBuilder.Configure<App>();
     }

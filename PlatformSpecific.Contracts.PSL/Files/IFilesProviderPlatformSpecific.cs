@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PlatformSpecific.Contracts.PSL
+namespace PlatformSpecific.Contracts.PSL.Files
 {
     public interface IFilesProviderPlatformSpecific
     {

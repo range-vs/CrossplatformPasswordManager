@@ -1,4 +1,4 @@
-﻿using PlatformSpecific.Contracts.PSL;
+﻿using PlatformSpecific.Contracts.PSL.Files;
 using System.Diagnostics;
 
 namespace CrossplatformPasswordManagerPL.Browser.Files

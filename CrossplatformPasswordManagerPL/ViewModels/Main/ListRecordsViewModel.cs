@@ -6,6 +6,7 @@ using CrossplatformPasswordManagerPL.Helpers;
 using Database.Contracts.BLL;
 using DialogHostAvalonia;
 using DynamicData.Binding;
+using Helpers.Common.Internet;
 using Helpers.Common.Mapper;
 using Models.Common;
 using Ninject.Common;
@@ -66,18 +67,25 @@ namespace CrossplatformPasswordManagerPL.ViewModels.Main
             RenameApplyCommand = ReactiveCommand.CreateFromTask(RenameApply);
             RemoveApplyCommand = ReactiveCommand.CreateFromTask(RemoveApply);
             RemoveAndRenameCancelCommand = ReactiveCommand.Create(RemoveAndRenameCancel);
+            using (var scope = ServiceModule.Container?.BeginLifetimeScope())
+            {
+                var servertask = scope?.Resolve<IServerSaver>();
+                if (servertask != null)
+                {
+                    servertask.Run();
+                }
+            }
             _ = Init();
         }
 
         private async Task Init()
         {
-            // TODO: продумать запись данных в БД и на сервер!
             using (var scope = ServiceModule.Container?.BeginLifetimeScope())
             {
                 var mapper = scope?.Resolve<ICPMapper>();
                 if (mapper != null)
                 {
-                    var groupsLogic = scope?.Resolve<IGroupLogic>();
+                    var groupsLogic = scope?.Resolve<IGroupDbLogic>();
                     if (groupsLogic != null)
                     {
                         var rec = await groupsLogic.GetAll();

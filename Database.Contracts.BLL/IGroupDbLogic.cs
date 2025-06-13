@@ -7,9 +7,11 @@ using System.Threading.Tasks;
 
 namespace Database.Contracts.BLL
 {
-    public interface IGroupLogic
+    public interface IGroupDbLogic
     {
         Task<IEnumerable<GroupModel>> GetAll();
-        Task WriteConcurrent(GroupModel model);
+
+        Task Write(IEnumerable<GroupModel> data);
+
     }
 }

@@ -14,6 +14,7 @@ using LocalStorage.Contratcs.DAL;
 using PlatformSpecific.Contracts.PSL;
 using System.Collections;
 using Helpers.Common.Mapper;
+using Helpers.Common.Internet;
 
 namespace Ninject.Common
 {
@@ -64,33 +65,20 @@ namespace Ninject.Common
             {
                 // DAL
                 _builder.RegisterType<GroupDbDao>().As<IGroupDbDao>();
+                _builder.RegisterType<GroupServerDao>().As<IGroupServerDao>();
                 _builder.RegisterType<LocalStorageDao>().As<ILocalStorageDao>();
 
                 // BLL
-                _builder.RegisterType<GroupLogic>().As<IGroupLogic>();
+                _builder.RegisterType<GroupDbLogic>().As<IGroupDbLogic>();
+                _builder.RegisterType<GroupServerLogic>().As<IGroupServerLogic>();
                 _builder.RegisterType<AuthLogic>().As<IAuthLogic>();
                 _builder.RegisterType<AuthSequrityLogic>().As<IAuthSequrityLogic>();
 
                 // Mapper
                 _builder.RegisterInstance(new CPMapper()).As<ICPMapper>();
 
-                //// Platform Specific
-                //if (OperatingSystem.IsWindows())
-                //{
-                //    //_builder.RegisterType<PlatformSpecific.Windows.PSL.FilesProviderPlatformSpecific>().As<IFilesProviderPlatformSpecific>();
-                //}
-                //else if (OperatingSystem.IsLinux())
-                //{
-                //    _builder.RegisterType<PlatformSpecific.Linux.PSL.FilesProviderPlatformSpecific>().As<IFilesProviderPlatformSpecific>();
-                //}
-                //else if (OperatingSystem.IsAndroid())
-                //{
-                //    //_builder.RegisterType<PlatformSpecific.Android.PSL.FilesProviderPlatformSpecific>().As<IFilesProviderPlatformSpecific>();
-                //}
-                //else if(OperatingSystem.IsBrowser())
-                //{
-                //    _builder.RegisterType<PlatformSpecific.Browser.PSL.FilesProviderPlatformSpecific>().As<IFilesProviderPlatformSpecific>();
-                //}
+                // Internet task
+                _builder.RegisterType<ServerSaver>().As<IServerSaver>();
 
                 // ctor DI
                 Container = _builder.Build();

@@ -15,6 +15,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Entities.Common\Entities.Common.csproj" />
     <ProjectReference Include="..\Models.Common\Models.Common.csproj" />
+    <ProjectReference Include="..\PlatformSpecific.Contracts.PSL\PlatformSpecific.Contracts.PSL.csproj" />
   </ItemGroup>
 
 </Project>

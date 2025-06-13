@@ -1,6 +1,5 @@
 ﻿using Database.Contracts.DAL;
 using Entities.Common;
-using Models.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +8,8 @@ using System.Threading.Tasks;
 
 namespace Database.Core.DAL
 {
-    public class GroupDbDao : IGroupDbDao
+    public class GroupServerDao: IGroupServerDao
     {
-
         public async Task<IEnumerable<GroupEntity>> GetAll()
         {
             // TODO: запрашиваем все сущности с сервака, и передаем их в BLL
@@ -43,6 +41,6 @@ namespace Database.Core.DAL
             // пока имитация
             await Task.Delay(1000);
         }
-
     }
+
 }

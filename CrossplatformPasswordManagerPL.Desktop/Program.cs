@@ -5,9 +5,11 @@ using Avalonia;
 using Avalonia.ReactiveUI;
 using AvaloniaInside.Shell;
 using CrossplatformPasswordManagerPL.Desktop.Files;
+using CrossplatformPasswordManagerPL.Desktop.Internet;
 using CrossplatformPasswordManagerPL.Desktop.Sequrity;
 using Ninject.Common;
-using PlatformSpecific.Contracts.PSL;
+using PlatformSpecific.Contracts.PSL.Files;
+using PlatformSpecific.Contracts.PSL.Internet;
 using PlatformSpecific.Contracts.PSL.Sequrity;
 
 namespace CrossplatformPasswordManagerPL.Desktop;
@@ -26,7 +28,8 @@ sealed class Program
     {
         ServiceModule.InitForPlatform(
             new KeyValuePair<Type, Type>(typeof(FilesProvider), typeof(IFilesProviderPlatformSpecific)),
-            new KeyValuePair<Type, Type>(typeof(OSAuth), typeof(IOSAuthPlatformSpecific))
+            new KeyValuePair<Type, Type>(typeof(OSAuth), typeof(IOSAuthPlatformSpecific)),
+            new KeyValuePair<Type, Type>(typeof(InternetAdapterChecker), typeof(IInternetAdapterChecker))
         );
         return AppBuilder.Configure<App>()
             .UsePlatformDetect()
