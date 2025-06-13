@@ -26,6 +26,8 @@ namespace CrossplatformPasswordManagerPL.ViewModels.Main
         private readonly IResourceDictionary _resources;
 
         private ObservableCollection<string> _records;
+        private string _currentRecord;
+
         public ICommand RenameCommand { get; set; }
         public ICommand RemoveCommand { get; set; }
 
@@ -38,6 +40,12 @@ namespace CrossplatformPasswordManagerPL.ViewModels.Main
             get => _records;
             set => this.RaiseAndSetIfChanged(ref _records, value);
         }
+        public string CurrentRecord
+        {
+            get => _currentRecord;
+            set => this.RaiseAndSetIfChanged(ref _currentRecord, value);
+        }
+
         public ListRecordsViewModel(INavigator navigationService, IResourceDictionary resources)
         {
             _navigationService = navigationService;
@@ -47,7 +55,10 @@ namespace CrossplatformPasswordManagerPL.ViewModels.Main
             RenameApplyCommand = ReactiveCommand.CreateFromTask(RenameApply);
             RemoveApplyCommand = ReactiveCommand.CreateFromTask(RemoveApply);
             RemoveAndRenameCancelCommand = ReactiveCommand.Create(RemoveAndRenameCancel);
+            // сделать набор сущностей и загрузить их с сервера (пока имитация)
             // TODO: загрузить данные через DШ(синглтон, запомнить данные в DI)
+            // настроить кастомную ui
+            // настроить биндинг строчки из list view
             Records = new ObservableCollection<string>() { "Ivan", "run club", "mother"};
         }
 

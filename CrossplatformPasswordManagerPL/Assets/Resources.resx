@@ -181,7 +181,7 @@
     <value>Remove</value>
   </data>
   <data name="RemoveQuestionText" xml:space="preserve">
-    <value>Remove?</value>
+    <value>Remove item?</value>
   </data>
   <data name="RemoveRecordDialogId" xml:space="preserve">
     <value>RemoveRecordDialog</value>
@@ -190,7 +190,7 @@
     <value>Rename</value>
   </data>
   <data name="RenameQuestionText" xml:space="preserve">
-    <value>Rename?</value>
+    <value>Rename item?</value>
   </data>
   <data name="RenameRecordDialogId" xml:space="preserve">
     <value>RenameRecordDialog</value>

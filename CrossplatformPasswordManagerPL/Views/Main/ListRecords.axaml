@@ -12,6 +12,7 @@
 	<Page.Resources>
 		<StackPanel x:Key="{x:Static assets:Resources.RemoveRecordDialogId}">
 			<TextBlock Text="{x:Static assets:Resources.RemoveQuestionText}"/>
+			<TextBlock Text="{Binding CurrentRecord}"/>
 			<Grid>
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition/>
@@ -23,6 +24,7 @@
 		</StackPanel>
 		<StackPanel x:Key="{x:Static assets:Resources.RenameRecordDialogId}">
 			<TextBlock Text="{x:Static assets:Resources.RenameQuestionText}"/>
+			<TextBox Text="{Binding CurrentRecord}"/>
 			<Grid>
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition/>
@@ -40,7 +42,7 @@
 				<RowDefinition Height="*"/>
 				<RowDefinition Height="0.1*"/>
 			</Grid.RowDefinitions>
-			<ListBox Grid.Row="0" Margin="5" ItemsSource="{Binding Records}">
+			<ListBox Grid.Row="0" Margin="5" ItemsSource="{Binding Records}" SelectedItem="{Binding CurrentRecord}">
 
 			</ListBox>
 			<Grid Grid.Row="1">
