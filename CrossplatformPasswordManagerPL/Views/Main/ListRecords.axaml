@@ -10,30 +10,30 @@
 			 xmlns:vm="clr-namespace:CrossplatformPasswordManagerPL.ViewModels.Main"
 			 x:DataType="vm:ListRecordsViewModel">
 	<Page.Resources>
-		<StackPanel x:Key="RemoveRecordDialog">
-			<TextBlock Text="Remove record?"/>
+		<StackPanel x:Key="{x:Static assets:Resources.RemoveRecordDialogId}">
+			<TextBlock Text="{x:Static assets:Resources.RemoveQuestionText}"/>
 			<Grid>
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition/>
 					<ColumnDefinition/>
 				</Grid.ColumnDefinitions>
-				<Button Grid.Column="0" HorizontalAlignment="Center" Content="Yes" Command="{Binding RenameApplyCommand}"/>
-				<Button Grid.Column="1" HorizontalAlignment="Center" Content="No" Command="{Binding RemoveAndRenameCancelCommand}"/>
+				<Button Grid.Column="0" HorizontalAlignment="Center" Content="{x:Static assets:Resources.ApplyButtonText}" Command="{Binding RenameApplyCommand}"/>
+				<Button Grid.Column="1" HorizontalAlignment="Center" Content="{x:Static assets:Resources.CancelButtonText}" Command="{Binding RemoveAndRenameCancelCommand}"/>
 			</Grid>
 		</StackPanel>
-		<StackPanel x:Key="RenameRecordDialog">
-			<TextBlock Text="Rename record?"/>
+		<StackPanel x:Key="{x:Static assets:Resources.RenameRecordDialogId}">
+			<TextBlock Text="{x:Static assets:Resources.RenameQuestionText}"/>
 			<Grid>
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition/>
 					<ColumnDefinition/>
 				</Grid.ColumnDefinitions>
-				<Button Grid.Column="0" HorizontalAlignment="Center" Content="Yes" Command="{Binding RemoveApplyCommand}"/>
-				<Button Grid.Column="1" HorizontalAlignment="Center" Content="No" Command="{Binding RemoveAndRenameCancelCommand}"/>
+				<Button Grid.Column="0" HorizontalAlignment="Center" Content="{x:Static assets:Resources.ApplyButtonText}" Command="{Binding RemoveApplyCommand}"/>
+				<Button Grid.Column="1" HorizontalAlignment="Center" Content="{x:Static assets:Resources.CancelButtonText}" Command="{Binding RemoveAndRenameCancelCommand}"/>
 			</Grid>
 		</StackPanel>
 	</Page.Resources>
-	<dialogHost:DialogHost CloseOnClickAway="True" Identifier="MainDialog"
+	<dialogHost:DialogHost CloseOnClickAway="True" Identifier="{x:Static assets:Resources.ListRecordsDialogId}"
                                        BlurBackground="True">
 		<Grid>
 			<Grid.RowDefinitions>
@@ -49,9 +49,9 @@
 					<ColumnDefinition Width="*"/>
 					<ColumnDefinition Width="*"/>
 				</Grid.ColumnDefinitions>
-				<Button Grid.Column="0" HorizontalAlignment="Center" Content="Add"/>
-				<Button Grid.Column="1" HorizontalAlignment="Center" Content="Rename" Command="{Binding RenameCommand}"/>
-				<Button Grid.Column="2" HorizontalAlignment="Center" Content="Remove" Command="{Binding RemoveCommand}"/>
+				<Button Grid.Column="0" HorizontalAlignment="Center" Content="{x:Static assets:Resources.AddButtonText}"/>
+				<Button Grid.Column="1" HorizontalAlignment="Center" Content="{x:Static assets:Resources.RenameButtonText}" Command="{Binding RenameCommand}"/>
+				<Button Grid.Column="2" HorizontalAlignment="Center" Content="{x:Static assets:Resources.RemoveButtonText}" Command="{Binding RemoveCommand}"/>
 			</Grid>
 		</Grid>
 	</dialogHost:DialogHost>

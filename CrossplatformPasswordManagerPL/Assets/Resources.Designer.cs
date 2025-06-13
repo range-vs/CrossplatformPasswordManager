@@ -262,5 +262,115 @@ namespace CrossplatformPasswordManagerPL.Assets {
             }
         }
 
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Server properties.
+        /// </summary>
+        public static string RenameQuestionText
+        {
+            get
+            {
+                return ResourceManager.GetString("RenameQuestionText", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Server properties.
+        /// </summary>
+        public static string RemoveQuestionText
+        {
+            get
+            {
+                return ResourceManager.GetString("RemoveQuestionText", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Server properties.
+        /// </summary>
+        public static string ApplyButtonText
+        {
+            get
+            {
+                return ResourceManager.GetString("ApplyButtonText", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Server properties.
+        /// </summary>
+        public static string CancelButtonText
+        {
+            get
+            {
+                return ResourceManager.GetString("CancelButtonText", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Server properties.
+        /// </summary>
+        public static string ListRecordsDialogId
+        {
+            get
+            {
+                return ResourceManager.GetString("ListRecordsDialogId", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Server properties.
+        /// </summary>
+        public static string RenameButtonText
+        {
+            get
+            {
+                return ResourceManager.GetString("RenameButtonText", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Server properties.
+        /// </summary>
+        public static string RemoveButtonText
+        {
+            get
+            {
+                return ResourceManager.GetString("RemoveButtonText", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Server properties.
+        /// </summary>
+        public static string AddButtonText
+        {
+            get
+            {
+                return ResourceManager.GetString("AddButtonText", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Server properties.
+        /// </summary>
+        public static string RemoveRecordDialogId
+        {
+            get
+            {
+                return ResourceManager.GetString("RemoveRecordDialogId", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Server properties.
+        /// </summary>
+        public static string RenameRecordDialogId
+        {
+            get
+            {
+                return ResourceManager.GetString("RenameRecordDialogId", resourceCulture);
+            }
+        }
+
     }
 }

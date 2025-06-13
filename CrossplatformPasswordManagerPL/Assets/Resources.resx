@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AddButtonText" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="ApplyButtonText" xml:space="preserve">
+    <value>Apply</value>
+  </data>
   <data name="AuthButtonText" xml:space="preserve">
     <value>Authorization</value>
   </data>
@@ -137,6 +143,12 @@
   </data>
   <data name="AuthUrlTitleText" xml:space="preserve">
     <value>Write URL your server:</value>
+  </data>
+  <data name="CancelButtonText" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="ListRecordsDialogId" xml:space="preserve">
+    <value>ListRecordsDialog</value>
   </data>
   <data name="LocalAuthPinPlaceholderText" xml:space="preserve">
     <value>Enter your PIN...</value>
@@ -164,6 +176,24 @@
   </data>
   <data name="OSAuthProcessText" xml:space="preserve">
     <value>Requesting OS auth...</value>
+  </data>
+  <data name="RemoveButtonText" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="RemoveQuestionText" xml:space="preserve">
+    <value>Remove?</value>
+  </data>
+  <data name="RemoveRecordDialogId" xml:space="preserve">
+    <value>RemoveRecordDialog</value>
+  </data>
+  <data name="RenameButtonText" xml:space="preserve">
+    <value>Rename</value>
+  </data>
+  <data name="RenameQuestionText" xml:space="preserve">
+    <value>Rename?</value>
+  </data>
+  <data name="RenameRecordDialogId" xml:space="preserve">
+    <value>RenameRecordDialog</value>
   </data>
   <data name="RepeatAuthButtonText" xml:space="preserve">
     <value>Repeat request OS auth</value>

@@ -54,12 +54,12 @@ namespace CrossplatformPasswordManagerPL.ViewModels.Main
 
         private async Task Remove()
         {
-            await DialogHost.Show(_resources["RemoveRecordDialog"]!, "MainDialog");
+            await DialogHost.Show(_resources[Resources.RemoveRecordDialogId]!, Resources.ListRecordsDialogId);
         }
 
         private async Task Rename()
         {
-            await DialogHost.Show(_resources["RenameRecordDialog"]!, "MainDialog");
+            await DialogHost.Show(_resources[Resources.RenameRecordDialogId]!, Resources.ListRecordsDialogId);
         }
 
         private async Task RenameApply()
@@ -76,7 +76,7 @@ namespace CrossplatformPasswordManagerPL.ViewModels.Main
 
         private void RemoveAndRenameCancel()
         {
-            DialogHost.GetDialogSession("MainDialog")?.Close(false);
+            DialogHost.GetDialogSession(Resources.ListRecordsDialogId)?.Close(false);
         }
     }
 }
