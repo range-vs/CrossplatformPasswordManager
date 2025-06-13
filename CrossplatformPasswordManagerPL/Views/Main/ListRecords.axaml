@@ -8,6 +8,7 @@
 	         x:Class="CrossplatformPasswordManagerPL.Views.Main.ListRecords"
              xmlns:dialogHost="clr-namespace:DialogHostAvalonia;assembly=DialogHost.Avalonia"       
              NavigationBar.Visible="False"
+	         xmlns:dialogs="using:AvaloniaDialogs.Views"
 			 xmlns:vm="clr-namespace:CrossplatformPasswordManagerPL.ViewModels.Main"
 			 x:DataType="vm:ListRecordsViewModel">
 	<Page.Resources>

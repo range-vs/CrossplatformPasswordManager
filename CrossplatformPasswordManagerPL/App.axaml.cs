@@ -23,7 +23,6 @@ public partial class App : Application
         ServiceModule.InitForPlatform(
                         new KeyValuePair<Type, Type>(typeof(ServerSaver), typeof(IServerSaver))
             );
-        ServiceModule.Init();
     }
 
     public override void OnFrameworkInitializationCompleted()

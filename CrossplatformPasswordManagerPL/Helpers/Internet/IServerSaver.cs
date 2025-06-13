@@ -8,7 +8,7 @@ namespace Helpers.Common.Internet
 {
     public interface IServerSaver
     {
-        void Run();
+        Task Run();
 
     }
 }

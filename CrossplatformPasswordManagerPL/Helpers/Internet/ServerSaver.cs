@@ -1,8 +1,14 @@
-﻿using CrossplatformPasswordManagerPL.Helpers;
+﻿using Autofac;
+using CrossplatformPasswordManagerPL.Helpers;
+using CrossplatformPasswordManagerPL.Helpers.UI;
 using Database.Contracts.BLL;
+using Helpers.Common.Mapper;
+using Models.Common;
+using Ninject.Common;
 using PlatformSpecific.Contracts.PSL.Internet;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Net.NetworkInformation;
@@ -15,6 +21,9 @@ namespace Helpers.Common.Internet
     public class ServerSaver : IServerSaver, IDisposable
     {
         private readonly static int PingCountSec = 5000;
+
+        private bool _isInetActive = true;
+        private bool _isServerActive = true;
 
         private readonly IInternetAdapterChecker _internetAdapterCheckerPlatformSpecific;
         private readonly IGroupDbLogic _groupDbLogic;
@@ -29,11 +38,11 @@ namespace Helpers.Common.Internet
             _groupServerLogic = groupServerLogic;
         }
 
-        public void Run()
+        public async Task Run()
         {
             _cts = new CancellationTokenSource();
 
-            var periodicTask = TrySaveDataToServer(TimeSpan.FromSeconds(20), _cts.Token);
+            await TrySaveDataToServer(TimeSpan.FromSeconds(20), _cts.Token);
         }
 
         public void Dispose()
@@ -43,45 +52,62 @@ namespace Helpers.Common.Internet
 
         private async Task TrySaveDataToServer(TimeSpan interval, CancellationToken cancellationToken)
         {
-            var waitTask = async () => { 
-                await Task.Delay(interval, cancellationToken); 
-            };
-            while (!cancellationToken.IsCancellationRequested)
+            using (var scope = ServiceModule.Container?.BeginLifetimeScope())
             {
-                try
+                var toasts = scope?.Resolve<IToastControlContainer>();
+                while (!cancellationToken.IsCancellationRequested)
                 {
-                    using (Ping ping = new Ping())
+                    try
                     {
-                        if (!_internetAdapterCheckerPlatformSpecific.IsInternetAdapterAvailable())
+                        using (Ping ping = new Ping())
                         {
-                            //await PageLocator.ShowToast("Подключение к интернету потеряно");
-                            await waitTask.Invoke();
-                            continue;
+                            if (!_internetAdapterCheckerPlatformSpecific.IsInternetAdapterAvailable())
+                            {
+                                if (_isInetActive)
+                                {
+                                    toasts?.Show(TimeSpan.FromSeconds(3), "Подключение к интернету потеряно");
+                                }
+                                _isInetActive = false;
+                                throw new Exception("Not internet connection");
+                            }
+                            PingReply reply = await ping.SendPingAsync("8.8.8.8", PingCountSec);
+                            if (reply.Status != IPStatus.Success)
+                            {
+                                if (_isServerActive)
+                                {
+                                    toasts?.Show(TimeSpan.FromSeconds(3), "Подключение к серверу потеряно");
+                                }
+                                _isServerActive = false;
+                                throw new Exception("Not server connection");
+                            }
                         }
-                        PingReply reply = await ping.SendPingAsync("8.8.8.8", PingCountSec);
-                        if(reply.Status != IPStatus.Success)
+                        if(!_isInetActive)
                         {
-                            //await PageLocator.ShowToast("Подключение к серверу потеряно");
-                            await waitTask.Invoke();
-                            continue;
+                            toasts?.Show(TimeSpan.FromSeconds(3), "Подключение к интернету восстановлено");
                         }
+                        _isInetActive = true;
+                        if (!_isServerActive)
+                        {
+                            toasts?.Show(TimeSpan.FromSeconds(3), "Подключение к серверу восстановлено");
+                        }
+                        _isServerActive = true;
+                        var actualData = await _groupDbLogic.GetAll();
+                        if (actualData != null)
+                        {
+                            await _groupServerLogic.Write(actualData);
+                        }
+                        Debug.WriteLine($"Data send to server - OK");
                     }
-                    var actualData = await _groupDbLogic.GetAll();
-                    if (actualData != null)
+                    catch (TaskCanceledException)
                     {
-                        await _groupServerLogic.Write(actualData);
+                        break;
                     }
+                    catch (Exception ex)
+                    {
+                        Debug.WriteLine($"Data send to server - error: {ex.Message}");
+                    }
+                    await Task.Delay(interval, cancellationToken);
                 }
-                catch (TaskCanceledException)
-                {
-                    break;
-                }
-                catch (Exception ex)
-                {
-                    Debug.WriteLine($"Data send to server - error: {ex.Message}");
-                }
-                Debug.WriteLine($"Data send to server - OK");
-                await waitTask.Invoke();
             }
         }
 

@@ -3,6 +3,7 @@ using Avalonia.Controls;
 using AvaloniaInside.Shell;
 using CrossplatformPasswordManagerPL.Assets;
 using CrossplatformPasswordManagerPL.Helpers;
+using CrossplatformPasswordManagerPL.Helpers.UI;
 using Database.Contracts.BLL;
 using DialogHostAvalonia;
 using DynamicData.Binding;
@@ -70,14 +71,6 @@ namespace CrossplatformPasswordManagerPL.ViewModels.Main
             RenameApplyCommand = ReactiveCommand.CreateFromTask(RenameApply);
             RemoveApplyCommand = ReactiveCommand.CreateFromTask(RemoveApply);
             RemoveAndRenameCancelCommand = ReactiveCommand.Create(RemoveAndRenameCancel);
-            using (var scope = ServiceModule.Container?.BeginLifetimeScope())
-            {
-                var servertask = scope?.Resolve<IServerSaver>();
-                if (servertask != null)
-                {
-                    servertask.Run();
-                }
-            }
             _ = Init();
         }
 
@@ -97,11 +90,23 @@ namespace CrossplatformPasswordManagerPL.ViewModels.Main
                 }
             }
             IsLoadData = false;
+            using (var scope = ServiceModule.Container?.BeginLifetimeScope())
+            {
+                var servertask = scope?.Resolve<IServerSaver>();
+                if (servertask != null)
+                {
+                    await servertask.Run();
+                }
+            }
         }
 
         private async Task Add()
         {
-            
+            using (var scope = ServiceModule.Container?.BeginLifetimeScope())
+            {
+                var toasts = scope?.Resolve<IToastControlContainer>();
+                toasts?.Show(TimeSpan.FromSeconds(3), "Подключение к интернету потеряно");
+            }
         }
 
         private async Task Remove()
