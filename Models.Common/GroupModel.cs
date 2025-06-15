@@ -12,6 +12,7 @@ namespace Models.Common
     {
         private long _id;
         private string _name;
+        private bool _isEdit;
 
         public long Id
         {
@@ -22,6 +23,12 @@ namespace Models.Common
         {
             get { return _name; }
             set { SetProperty(ref _name, value); }
+        }
+
+        public bool IsEdit
+        {
+            get { return _isEdit; }
+            set { SetProperty(ref _isEdit, value); }
         }
     }
 }

@@ -32,7 +32,7 @@ namespace Database.Core.BLL
 
         public async Task Write(IEnumerable<GroupModel> data)
         {
-            // TODO: кастим модели в сущности с помощью автомаппера по флагу НЕ_ЗАПИСАНО и отправляем в DAL на сервер
+            // TODO: кастим модели в сущности с помощью автомаппера по флагу IsEdit и отправляем в DAL на сервер
             await Task.Delay(1000);
         }
     }
